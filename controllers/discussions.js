@@ -17,7 +17,7 @@ function index(req, res) {
 function create(req, res) {
   req.body.owner = req.user.profile._id
   Discussion.create(req.body)
-  .then(taco => {
+  .then(discussion => {
     res.redirect('/discussions')
   })
   .catch(err => {
@@ -41,8 +41,61 @@ function show(req, res) {
   })
 }
 
+function edit(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(discussion => {
+    res.render('discussions/edit', {
+      discussion,
+      title: "Edit Discussion"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
+function update(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(discussion => {
+    if (discussion.owner.equals(req.user.profile._id)) {
+      discussion.updateOne(req.body)
+      .then(()=> {
+        res.redirect(`/discussions/${discussion._id}`)
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/discussions`)
+  })
+}
+
+function deleteDiscussion(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(discussion => {
+    if (discussion.owner.equals(req.user.profile._id)) {
+      discussion.deleteOne()
+      .then(() => {
+        res.redirect('/discussions')
+      })
+    } else {
+      throw new Error ('🚫 Not authorized 🚫')
+    }   
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
 export {
   index,
   create,
-  show
+  show,
+  edit,
+  update,
+  deleteDiscussion as delete
 }

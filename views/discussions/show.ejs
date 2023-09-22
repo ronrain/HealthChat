@@ -18,5 +18,13 @@
   </label>
   <button type="submit">Add Discussion</button></h2>
 </section>
+  <% if (.owner.equals(user?.profile._id)) { %>
+    <a href="/discussions/<%= discussion._id %>/edit">
+      <button class="btn">Edit this Discussion</button>
+    </a>
+    <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">Delete this Discussion</button>
+    </form>
+  <% } %>
 
 <%- include('../partials/footer') %>
