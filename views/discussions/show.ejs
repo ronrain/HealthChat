@@ -2,7 +2,7 @@
 <%- include('../partials/nav') %>
 
 <section>
-	<p>A Health Concern from<%= discussion.owner.topic %></p>
+	<p>A Health Concern from<%= discussion.author.topic %></p>
   <h1><%= discussion.topic %> 🌮</h1>
   <h2><label>
     Health Concern: 
@@ -18,13 +18,35 @@
   </label>
   <button type="submit">Add Discussion</button></h2>
 </section>
-  <% if (.owner.equals(user?.profile._id)) { %>
+  <% if (.o.equals(user?.profile._id)) { %>
     <a href="/discussions/<%= discussion._id %>/edit">
       <button class="btn">Edit this Discussion</button>
     </a>
     <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
       <button class="btn" type="submit">Delete this Discussion</button>
     </form>
+  <% } %>
+  <% if (discussion.replies.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Reply</th>
+          <th>Medical Professional</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% discussion.replies.forEach(function(reply) { %>
+          <tr>
+            <td><%= reply.createdAt.toLocaleDateString() %></td>
+            <td><%= reply.content %></td>
+            <td><%= reply.isDoctor %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>No Replies Yet</h3>
   <% } %>
 
 <%- include('../partials/footer') %>
