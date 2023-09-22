@@ -29,7 +29,7 @@ function create(req, res) {
 function show(req, res) {
   Discussion.findById(req.params.discussionId)
   .populate([
-    {path: 'owner'},
+    {path: 'author'},
     {path: 'replies.author'}
   ])
   .then(discussion => {
@@ -79,7 +79,7 @@ function update(req, res) {
 function deleteDiscussion(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    if (discussion.o.equals(req.user.profile._id)) {
+    if (discussion.author.equals(req.user.profile._id)) {
       discussion.deleteOne()
       .then(() => {
         res.redirect('/discussions')
@@ -135,6 +135,54 @@ function editReply(req, res) {
   })
 }
 
+function updateReply(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(discussion => {
+    const reply = discussion.replies.id(req.params.replyId)
+    if (reply.author.equals(req.user.profile._id)) {
+      reply.set(req.body)
+      discussion.save()
+      .then(() => {
+        res.redirect(`/discussions/${discussion._id}`)
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/discussions')
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
+function deleteReply(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(taco => {
+    const reply = discussion.replies.id(req.params.replyId)
+    if (reply.author.equals(req.user.profile._id)) {
+      discussion.replies.remove(reply)
+      discussion.save()
+      .then(() => {
+        res.redirect(`/discussions/${discussion._id}`)
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/discussions')
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
 export {
   index,
   create,
@@ -143,5 +191,7 @@ export {
   update,
   deleteDiscussion as delete,
   addReply,
-  editReply
+  editReply,
+  updateReply,
+  deleteReply
 }

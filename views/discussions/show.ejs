@@ -2,63 +2,74 @@
 <%- include('../partials/nav') %>
 
 <section>
-	<p>A Health Concern from<%= discussion.author.topic %></p>
-  <h1><%= discussion.topic %> 🌮</h1>
-  <h2><label>
-    Health Concern: 
-    <input type="text" name="topic" autocomplete="off">
-  </label>
-  <label>
-    Tell Us More!: 
-    <input type="text" name="content" autocomplete="off">
-  </label>
-  <label>
-    Symptoms: 
-    <input type="text" name="symptoms" autocomplete="off">
-  </label>
-  <button type="submit">Add Discussion</button></h2>
+	<p>A Health Concern from <%= discussion.author.topic %></p>
+  <h1><%= discussion.topic.title %></h1> 
+  <h2>Discussion Form:</h2> 
+  <form action="/discussions/add" method="POST"> 
+    <label>
+      Health Concern: 
+      <input type="text" name="topic" autocomplete="off">
+    </label>
+    <label>
+      Tell Us More!: 
+      <input type="text" name="content" autocomplete="off">
+    </label>
+    <label>
+      Symptoms: 
+      <input type="text" name="symptoms" autocomplete="off">
+    </label>
+    <button type="submit">Add Discussion</button>
+  </form>
 </section>
-  <% if (.o.equals(user?.profile._id)) { %>
-    <a href="/discussions/<%= discussion._id %>/edit">
-      <button class="btn">Edit this Discussion</button>
-    </a>
-    <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
-      <button class="btn" type="submit">Delete this Discussion</button>
-    </form>
-  <% } %>
-  <% if (discussion.replies.length) { %>
-    <table>
-      <thead>
+<% if (discussion.author.equals(user?.profile._id)) { %>
+  <a href="/discussions/<%= discussion._id %>/edit">
+    <button class="btn">Edit this Discussion</button>
+  </a>
+  <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
+    <button class="btn" type="submit">Delete this Discussion</button>
+  </form>
+<% } %>
+<% if (discussion.replies.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Reply</th>
+        <th>Medical Professional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% discussion.replies.forEach(function(reply) { %>
         <tr>
-          <th>Date</th>
-          <th>Reply</th>
-          <th>Medical Professional</th>
+          <td><%= reply.createdAt.toLocaleDateString() %></td>
+          <td><%= reply.content %></td>
+          <td><%= reply.isDoctor ? "Yes" : "No" %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% discussion.replies.forEach(function(reply) { %>
-          <tr>
-            <td><%= reply.createdAt.toLocaleDateString() %></td>
-            <td><%= reply.content %></td>
-            <td><%= reply.isDoctor %></td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  <% } else { %>
-    <h3>No Replies Yet</h3>
-  <% } %>
-  <ul>
-    <% discussion.replies?.forEach(discussion => { %>
-      <li>
-        <%= reply.content %> - <%= reply.author.topic %>
-        <% if (reply.author.equals(user?.profile._id)) { %>
-          <a href="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
-            <button class="btn">Edit Comment</button>
-          </a>
-        <% } %> 
-      </li> 
-    <% }) %>
-  </ul>
+      <% }) %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h3>No Replies Yet</h3>
+<% } %>
+<ul>
+  <% discussion.replies?.forEach(reply => { %> 
+    <li>
+      <%= reply.content %> - <%= reply.author.topic %> 
+      <% if (reply.author.equals(user?.profile._id)) { %>
+        <form 
+          action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" 
+          method="POST"
+          class="inline"
+        >
+          <button class="btn" type="submit">Delete Comment</button>
+        </form>
+        <a href="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
+          <button class="btn">Edit Comment</button>
+        </a>
+      <% } %> 
+    </li> 
+  <% }) %>
+</ul>
+
 
 <%- include('../partials/footer') %>

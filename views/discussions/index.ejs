@@ -6,7 +6,9 @@
   <h2>Help Eachother!</h2>
   <ul>
     <% discussions.forEach(discussion => { %>
-      <li> <%= discussion.topic %> </li>
+      <li> 
+        <a href="/discussions/<%= discussion._id %>"><%= discussion.topic %> </a> 
+      </li>
     <% }) %>
   </ul>
 </section>
