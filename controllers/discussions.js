@@ -26,7 +26,23 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .populate("owner")
+  .then(discussion => {
+    res.render('discussions/show', {
+      discussion,
+      title: "Displayed Discussion"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
 export {
   index,
-  create
+  create,
+  show
 }

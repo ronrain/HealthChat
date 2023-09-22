@@ -1,0 +1,22 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+	<p>A Health Concern from<%= discussion.owner.topic %></p>
+  <h1><%= discussion.topic %> 🌮</h1>
+  <h2><label>
+    Health Concern: 
+    <input type="text" name="topic" autocomplete="off">
+  </label>
+  <label>
+    Tell Us More!: 
+    <input type="text" name="content" autocomplete="off">
+  </label>
+  <label>
+    Symptoms: 
+    <input type="text" name="symptoms" autocomplete="off">
+  </label>
+  <button type="submit">Add Discussion</button></h2>
+</section>
+
+<%- include('../partials/footer') %>
