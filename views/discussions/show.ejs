@@ -48,5 +48,17 @@
   <% } else { %>
     <h3>No Replies Yet</h3>
   <% } %>
+  <ul>
+    <% discussion.replies?.forEach(discussion => { %>
+      <li>
+        <%= reply.content %> - <%= reply.author.topic %>
+        <% if (reply.author.equals(user?.profile._id)) { %>
+          <a href="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
+            <button class="btn">Edit Comment</button>
+          </a>
+        <% } %> 
+      </li> 
+    <% }) %>
+  </ul>
 
 <%- include('../partials/footer') %>

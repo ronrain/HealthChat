@@ -28,11 +28,14 @@ function create(req, res) {
 
 function show(req, res) {
   Discussion.findById(req.params.discussionId)
-  .populate("author")
+  .populate([
+    {path: 'owner'},
+    {path: 'replies.author'}
+  ])
   .then(discussion => {
     res.render('discussions/show', {
-      discussion,
-      title: "Displayed Discussion"
+      title: "Displayed Discussion",
+      discussion
     })
   })
   .catch(err => {
@@ -91,9 +94,10 @@ function deleteDiscussion(req, res) {
   })
 }
 
-function createReply(req, res) {
-  Movie.findById(req.params.discussionId)
+function addReply(req, res) {
+  Discussion.findById(req.params.discussionId)
   .then(discussion => {
+    req.body.author = req.user.profile._id
     discussion.replies.push(req.body)
     discussion.save()
     .then(() => {
@@ -101,12 +105,33 @@ function createReply(req, res) {
     })
     .catch(err => {
       console.log(err)
-      res.redirect('/')
+      res.redirect('/discussions')
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/')
+    res.redirect('/discussions')
+  })
+}
+
+function editReply(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(discussion => {
+    const reply = discussion.replies.id(req.params.replyId)
+    if (reply.author.equals(req.user.profile._id)) {
+      res.render('discussions/editReply', {
+        discussion, 
+        comment,
+        isDoctor,
+        title: 'Update Reply'
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
   })
 }
 
@@ -117,5 +142,6 @@ export {
   edit,
   update,
   deleteDiscussion as delete,
-  createReply
+  addReply,
+  editReply
 }

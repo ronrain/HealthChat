@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const replySchema = new Schema({
-  author: {type: Schema.Types.ObjectId},
+  author: {type: Schema.Types.ObjectId, ref: "Profile"},
   content: String,
   isDoctor: Boolean
 }, {
