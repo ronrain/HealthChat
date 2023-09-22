@@ -14,6 +14,19 @@ function index(req, res) {
   })
 }
 
+function create(req, res) {
+  req.body.owner = req.user.profile._id
+  Discussion.create(req.body)
+  .then(taco => {
+    res.redirect('/discussions')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
 export {
-  index
+  index,
+  create
 }

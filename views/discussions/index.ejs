@@ -11,4 +11,26 @@
   </ul>
 </section>
 
+<section>
+  <h1>Discussions!</h1>
+	<%# New Code Below %>
+  <% if (user) { %>
+    <h2>Add a Discussion!</h2>
+    <form action="/discussions" method="POST">
+      <label>
+        Health Concern: 
+        <input type="text" name="topic" autocomplete="off">
+      </label>
+      <label>
+        Tell Us More!: 
+        <input type="text" name="content" autocomplete="off">
+      </label>
+      <label>
+        Symptoms: 
+        <input type="text" name="symptoms" autocomplete="off">
+      </label>
+      <button type="submit">Add Discussion</button>
+    </form>
+  <% } %>
+
 <%- include('../partials/footer') %>

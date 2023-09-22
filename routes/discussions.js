@@ -1,9 +1,11 @@
 import { Router } from 'express'
-import * as discussionCtrl from '../controllers/discussions.js'
+import * as discussionsCtrl from '../controllers/discussions.js'
+import { isLoggedIn } from '../middleware/middleware.js'
 
 const router = Router()
 
-router.get('/', discussionCtrl.index)
+router.get('/', discussionsCtrl.index)
+router.post('/', isLoggedIn, discussionsCtrl.create)
 
 export {
   router
