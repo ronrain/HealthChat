@@ -5,6 +5,7 @@ import { isLoggedIn } from '../middleware/middleware.js'
 const router = Router()
 
 router.get('/', discussionsCtrl.index)
+router.get('/new', discussionsCtrl.new)
 router.get('/:discussionId', discussionsCtrl.show)
 router.get('/:discussionId/edit', isLoggedIn, discussionsCtrl.edit)
 router.get('/:discussionId/replies/:replyId/edit', isLoggedIn, discussionsCtrl.editReply)

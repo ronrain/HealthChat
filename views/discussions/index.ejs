@@ -7,7 +7,7 @@
   <ul>
     <% discussions.forEach(discussion => { %>
       <li> 
-        <a href="/discussions/<%= discussion._id %>"><%= discussion.topic %></a> with symptom(s) <%= discussion.symptom %>
+        <a href="/discussions/<%= discussion._id %>"><%= discussion.topic %></a> with symptom(s): <%= discussion.symptom %>
       </li>
     <% }) %>
   </ul>

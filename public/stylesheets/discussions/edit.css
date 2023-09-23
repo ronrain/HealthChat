@@ -1,14 +1,14 @@
 :root {
-  --primary-dark: #11151C;
-  --background-light: #F5F3F5;
+  --dark: #11151C;
+  --background: #F5F3F5;
   --text-color: #364156;
-  --accent-color: #7D4E57;
+  --button-color: #7D4E57;
   --secondary-background: #FFFDED;
 }
 
 body {
   font-family: 'Signika', sans-serif;
-  background-color: var(--background-light);
+  background-color: var(--background);
   color: var(--text-color);
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ body {
 }
 
 section {
-  background-color: var(--secondary-background);
+  background-color: var(--button-background);
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;
@@ -29,14 +29,14 @@ h1 {
   font-size: 80px;
   margin-bottom: 20px;
   color: var(--primary-dark);
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: 2px solid var(--button-color);
   padding-bottom: 10px;
 }
 
 input[type="text"],
 textarea {
   padding: 12px; 
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--button-color);
   background-color: var(--secondary-background);
   color: var(--text-color);
   border-radius: 5px;
@@ -50,12 +50,12 @@ textarea {
 input[type="text"]:focus,
 textarea:focus {
   background-color: var(--background-light);
-  border-color: var(--primary-dark);
+  border-color: var(--dark);
   outline: none;
 }
 
 button {
-  background-color: var(--accent-color);
+  background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
   padding: 12px 20px;
@@ -69,7 +69,7 @@ button {
 
 button:hover {
   background-color: var(--text-color);
-  color: var(--background-light);
+  color: var(--background);
   transform: translateY(-2px); 
 }
 

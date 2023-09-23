@@ -7,16 +7,16 @@
     action="/discussions/<%= discussion._id %>/replies/<%= replies._id %>?_method=PUT"
     method="POST"
   >
-  <div id="editReply-content"></div>  
+  <div id="editReply-comment"></div>  
     <label>
       Content: 
       <textarea
         cols="30"
         rows="5" 
         type="text"
-        name="content" 
+        name="comment" 
         autocomplete="off"
-      ><%= replies.content %></textarea>
+      ><%= replies.comment %></textarea>
     </label>
   </div>
   <div id="editReply-isDoctor">  

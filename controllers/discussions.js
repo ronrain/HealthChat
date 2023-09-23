@@ -1,11 +1,17 @@
 import { Discussion } from '../models/discussion.js'
 
+function newDiscussion(req, res) {
+  res.render('discussions/new', {
+    title: 'Add Discussion'
+  })
+}
+
 function index(req, res) {
   Discussion.find({})
   .then(discussions => {
     res.render('discussions/index', {
       discussions,
-      title: 'Discussion'
+      title: 'All Discussions'
     })
   })
   .catch(err => {
@@ -31,11 +37,11 @@ function show(req, res) {
   Discussion.findById(req.params.discussionId)
   .populate([
     {path: 'author'},
-    {path: 'replies.author'}
+    {path: 'replies.poster'}
   ])
   .then(discussion => {
     res.render('discussions/show', {
-      title: "Display Discussion",
+      title: "Discussion Detail",
       discussion
     })
   })
@@ -100,7 +106,7 @@ function addReply(req, res) {
   req.body.isDoctor = !!req.body.isDoctor
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    req.body.author = req.user.profile._id
+    req.body.user = req.user.profile._id
     discussion.replies.push(req.body)
     discussion.save()
     .then(() => {
@@ -121,10 +127,10 @@ function editReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
-    if (replies.author.equals(req.user.profile._id)) {
+    if (replies.poster.equals(req.user.profile._id)) {
       res.render('discussions/editReply', {
         discussion, 
-        content,
+        replies,
         isDoctor,
         title: 'Update Reply'
       })
@@ -142,7 +148,7 @@ function updateReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
-    if (replies.author.equals(req.user.profile._id)) {
+    if (replies.poster.equals(req.user.profile._id)) {
       req.body.isDoctor = !!req.body.isDoctor
       replies.set(req.body)
       discussion.save()
@@ -167,7 +173,7 @@ function deleteReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
-    if (replies.author.equals(req.user.profile._id)) {
+    if (replies.poster.equals(req.user.profile._id)) {
       discussion.replies.remove(replies)
       discussion.save()
       .then(() => {
@@ -188,6 +194,7 @@ function deleteReply(req, res) {
 }
 
 export {
+  newDiscussion as new,
   index,
   create,
   show,

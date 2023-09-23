@@ -17,29 +17,17 @@
       </button>
     </form>
   <% } %>
-  <br>
-  <h2>Replies</h2>
-  <ul>
-    <% discussion.replies?.forEach(replies => { %>
-      <li>
-        <%= discussion.replies.author %>
-        <a href="/discussions/<%= discussion._id %>/replies/<%= replies._id %>/editReply">
-          <button class="btn">Edit Reply</button>
-        </a>
-      </li> 
-    <% }) %>
-  </ul>
+  <h2>Comments</h2>
   <% if (user) { %>
-    <h3>Add a Comment</h3>
+    <h3>Add a comment</h3>
     <form action="/discussions/<%= discussion._id %>/replies" method="POST">
-      <textarea name="content" placeholder="Reply Here..." ></textarea>
-      <br>
-      <h4>Check the box below if you are a medicial professional</h4>
-      <input type="checkbox" name="isDoctor" >
-      <br>
+      <textarea name="comment"></textarea><br>
+      <input type="checkbox"> Check the Box if you are a medical professional
       <button>Add Comment</button>
     </form>
   <% } %>
 </section>
+
+  
 
 <%- include('../partials/footer') %>
