@@ -1,0 +1,83 @@
+:root {
+  --primary-dark: #11151C;
+  --background-light: #F5F3F5;
+  --text-color: #364156;
+  --accent-color: #7D4E57;
+  --secondary-background: #FFFDED;
+}
+
+body {
+  font-family: 'Signika', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 50px; 
+}
+
+section {
+  background-color: var(--secondary-background);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 80px;
+  margin-bottom: 20px;
+  color: var(--primary-dark);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+}
+
+input[type="text"],
+textarea {
+  padding: 12px; 
+  border: 1px solid var(--accent-color);
+  background-color: var(--secondary-background);
+  color: var(--text-color);
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, border 0.3s;
+  font-family: 'Swanky and Moo Moo', cursive; 
+  font-size: 30px; 
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  background-color: var(--background-light);
+  border-color: var(--primary-dark);
+  outline: none;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: var(--secondary-background);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Signika', sans-serif; 
+  font-size: 30px; 
+}
+
+button:hover {
+  background-color: var(--text-color);
+  color: var(--background-light);
+  transform: translateY(-2px); 
+}
+
+button:active {
+  transform: translateY(0); 
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
+}
