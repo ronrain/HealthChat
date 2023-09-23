@@ -4,7 +4,7 @@
 <section>
   <h1>Edit your comment!</h1>
   <form 
-    action="/discussions/<%= discussion._id %>/replies/<%= replies._id %>?_method=PUT"
+    action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=PUT"
     method="POST"
   >
     <div id="editReply-comment"></div>  
@@ -21,7 +21,7 @@
     </div>
     <div id="editReply-isDoctor">  
     <label>
-        <input type="checkbox" name="isDoctor" value="true" <%= discussion.isDoctor ? 'checked' : '' %> />
+        <input type="checkbox" name="isDoctor" value="true" <%= replies.isDoctor ? 'checked' : '' %> />
         I am a medical professional
       </label>
     </div> 

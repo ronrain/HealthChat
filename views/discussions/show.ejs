@@ -2,8 +2,8 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <img src="<%= discussion.author.avatar %>" alt="a picture of the discussion post's author">
-  <p>Discussion Posted by <%= user.profile.name %></p>
+  <img src="<%= discussion.avatar %>" alt="a picture of the discussion post's author">
+  <p>Discussion Posted by <%= discussion.author.name %></p>
   <h1>Health Concern: <%= discussion.topic %></h1>
   <h2>Comments about the Health Concern: <%= discussion.content %></h2>
   <h2>My symptoms are: <%= discussion.symptom %></h2>
@@ -17,60 +17,17 @@
       </button>
     </form>
   <% } %>
-  <h2>Comments</h2>
-  <% if (user) { %>
-    <h3>Add a comment</h3>
-    <ul>
-      <% discussion.replies?.forEach(replies => { %>
-        <li>
-          <%= replies.comment %> - <%= user.profile.name %>
-          <% if (replies.poster.equals(user?.profile._id)) { %>
-            <form 
-            action="/discussions/<%= discussion._id %>/replies/<%= replies._id %>?_method=DELETE" 
-            method="POST"
-            class="inline"
-          >
-            <button class="btn" type="submit">Delete Comment</button>
-          </form>
-            <a href="/discussions/<%= discussion._id %>/replies/<%= replies._id %>/edit">
-              <button class="btn">Edit Comment</button>
-            </a>
-          <% } %> 
-        </li> 
-      <% }) %>
-    </ul>
-    <form action="/discussions/<%= discussion._id %>/replies" method="POST">
-      <textarea name="comment"></textarea><br>
-      <input type="checkbox"> Check the Box if you are a medical professional
-      <button>Add Comment</button>
-    </form>
-  <% } %>
-  <form 
-    action="/discussions/<%= discussion._id %>/replies/<%= replies._id %>?_method=PUT"
-    method="POST"
-  >
-    <div id="editReply-comment"></div>  
-    <label>
-      Content: 
-      <textarea
-        cols="30"
-        rows="5" 
-        type="text"
-        name="comment" 
-        autocomplete="off"
-      ><%= replies.comment %></textarea>
-    </label>
-    </div>
-    <div id="editReply-isDoctor">  
-    <label>
-        <input type="checkbox" name="isDoctor" value="true" <%= discussion.isDoctor ? 'checked' : '' %> />
-        I am a medical professional
-      </label>
-    </div> 
-    <button type="submit">Update Comment</button>
-  </form>
-</section>
-
+  <h2>Comments:</h2>
+  <ul>
+    <% discussion.replies?.forEach(reply => { %>
+      <li> 
+        <a href="discussions/<%= discussion._id %>/replies/<%= reply._id %>"><%= reply.comment %></a> - 
+        <%= reply.isDoctor ? 'Medical Professional' : 'Non-Medical Professional' %>
+      </li>
+    <% }) %>
+  </ul>
   
+
+</section>
 
 <%- include('../partials/footer') %>

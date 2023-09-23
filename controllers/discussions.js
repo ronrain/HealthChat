@@ -37,12 +37,12 @@ function show(req, res) {
   Discussion.findById(req.params.discussionId)
   .populate([
     {path: 'author'},
-    {path: 'replies.poster'}
+    {path: 'replies.author'}
   ])
   .then(discussion => {
     res.render('discussions/show', {
       title: "Discussion Detail",
-      discussion
+      discussion: discussion
     })
   })
   .catch(err => {
@@ -106,7 +106,7 @@ function addReply(req, res) {
   req.body.isDoctor = !!req.body.isDoctor
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    req.body.user = req.user.profile._id
+    req.body.author = req.user.profile._id
     discussion.replies.push(req.body)
     discussion.save()
     .then(() => {
@@ -127,11 +127,11 @@ function editReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
-    if (replies.poster.equals(req.user.profile._id)) {
+    if (replies.author.equals(req.user.profile._id)) {
+      console.log(replies)
       res.render('discussions/editReply', {
         discussion, 
         replies,
-        isDoctor,
         title: 'Update Reply'
       })
     } else {
@@ -148,7 +148,7 @@ function updateReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
-    if (replies.poster.equals(req.user.profile._id)) {
+    if (replies.author.equals(req.user.profile._id)) {
       req.body.isDoctor = !!req.body.isDoctor
       replies.set(req.body)
       discussion.save()
@@ -173,7 +173,7 @@ function deleteReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
-    if (replies.poster.equals(req.user.profile._id)) {
+    if (replies.author.equals(req.user.profile._id)) {
       discussion.replies.remove(replies)
       discussion.save()
       .then(() => {
