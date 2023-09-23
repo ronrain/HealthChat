@@ -16,6 +16,7 @@ function index(req, res) {
 
 function create(req, res) {
   req.body.author = req.user.profile._id
+  req.body.isDoctor = !!req.body.isDoctor
   Discussion.create(req.body)
   .then(discussion => {
     res.redirect('/discussions')
@@ -34,7 +35,7 @@ function show(req, res) {
   ])
   .then(discussion => {
     res.render('discussions/show', {
-      title: "Displayed Discussion",
+      title: "Display Discussion",
       discussion
     })
   })
@@ -62,6 +63,7 @@ function update(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     if (discussion.author.equals(req.user.profile._id)) {
+      req.body.isDoctor = !!req.body.isDoctor
       discussion.updateOne(req.body)
       .then(()=> {
         res.redirect(`/discussions/${discussion._id}`)
@@ -95,6 +97,7 @@ function deleteDiscussion(req, res) {
 }
 
 function addReply(req, res) {
+  req.body.isDoctor = !!req.body.isDoctor
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     req.body.author = req.user.profile._id
@@ -117,11 +120,11 @@ function addReply(req, res) {
 function editReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    const reply = discussion.replies.id(req.params.replyId)
-    if (reply.author.equals(req.user.profile._id)) {
+    const replies = discussion.replies.id(req.params.replyId)
+    if (replies.author.equals(req.user.profile._id)) {
       res.render('discussions/editReply', {
         discussion, 
-        comment,
+        content,
         isDoctor,
         title: 'Update Reply'
       })
@@ -138,9 +141,10 @@ function editReply(req, res) {
 function updateReply(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    const reply = discussion.replies.id(req.params.replyId)
-    if (reply.author.equals(req.user.profile._id)) {
-      reply.set(req.body)
+    const replies = discussion.replies.id(req.params.replyId)
+    if (replies.author.equals(req.user.profile._id)) {
+      req.body.isDoctor = !!req.body.isDoctor
+      replies.set(req.body)
       discussion.save()
       .then(() => {
         res.redirect(`/discussions/${discussion._id}`)
@@ -161,10 +165,10 @@ function updateReply(req, res) {
 
 function deleteReply(req, res) {
   Discussion.findById(req.params.discussionId)
-  .then(taco => {
-    const reply = discussion.replies.id(req.params.replyId)
-    if (reply.author.equals(req.user.profile._id)) {
-      discussion.replies.remove(reply)
+  .then(discussion => {
+    const replies = discussion.replies.id(req.params.replyId)
+    if (replies.author.equals(req.user.profile._id)) {
+      discussion.replies.remove(replies)
       discussion.save()
       .then(() => {
         res.redirect(`/discussions/${discussion._id}`)

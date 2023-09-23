@@ -2,36 +2,15 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <h1>Discussions</h1>
-  <h2>Help Eachother!</h2>
+  <h2>Open Discussions Below!</h2>
+  <h3>Check them out and see if you can help out someone!</h3>
   <ul>
     <% discussions.forEach(discussion => { %>
       <li> 
-        <a href="/discussions/<%= discussion._id %>"><%= discussion.topic %> </a> 
+        <a href="/discussions/<%= discussion._id %>"><%= discussion.topic %></a> with symptom(s) <%= discussion.symptom %>
       </li>
     <% }) %>
   </ul>
 </section>
-
-<section>
-  <h1>Discussions!</h1>
-  <% if (user) { %>
-    <h2>Add a Discussion!</h2>
-    <form action="/discussions" method="POST">
-      <label>
-        Health Concern: 
-        <input type="text" name="topic" autocomplete="off">
-      </label>
-      <label>
-        Tell Us More!: 
-        <input type="text" name="content" autocomplete="off">
-      </label>
-      <label>
-        Symptoms: 
-        <input type="text" name="symptoms" autocomplete="off">
-      </label>
-      <button type="submit">Add Discussion</button>
-    </form>
-  <% } %>
 
 <%- include('../partials/footer') %>

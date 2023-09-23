@@ -1,9 +1,11 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/discussions/edit.css">
 <%- include('../partials/nav') %>
 
 <section>
-  <h1>Have Some Updates on Your Discussion?</h1>
+  <h1>Have Some Updates on Your Health Discussion?</h1>
   <form action="/discussions/<%= discussion._id %>?_method=PUT" method="POST">
+    <div id="update-health-concern">
     <label>
       Health Concern: 
       <input 
@@ -15,24 +17,24 @@
     </label>
     <label>
       Content: 
-      <input 
-        type="text"
-        name="topic" 
-        value="<%= discussion.content %>" 
+      <textarea 
+        name="content" 
         autocomplete="off"
-      >
+      ><%= discussion.content %></textarea>
     </label>
     <label>
       Symptoms: 
       <input 
         type="text"
-        name="topic" 
+        name="symptom"
         value="<%= discussion.symptom %>" 
         autocomplete="off"
       >
     </label>
-    <button type="submit">Finished Editing?</button>
+    </div>
+    <button type="submit">Save Changes</button>
   </form>
 </section>
+
 
 <%- include('../partials/footer') %>

@@ -2,74 +2,44 @@
 <%- include('../partials/nav') %>
 
 <section>
-	<p>A Health Concern from <%= discussion.author.topic %></p>
-  <h1><%= discussion.topic.title %></h1> 
-  <h2>Discussion Form:</h2> 
-  <form action="/discussions/add" method="POST"> 
-    <label>
-      Health Concern: 
-      <input type="text" name="topic" autocomplete="off">
-    </label>
-    <label>
-      Tell Us More!: 
-      <input type="text" name="content" autocomplete="off">
-    </label>
-    <label>
-      Symptoms: 
-      <input type="text" name="symptoms" autocomplete="off">
-    </label>
-    <button type="submit">Add Discussion</button>
-  </form>
-</section>
-<% if (discussion.author.equals(user?.profile._id)) { %>
-  <a href="/discussions/<%= discussion._id %>/edit">
-    <button class="btn">Edit this Discussion</button>
-  </a>
-  <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
-    <button class="btn" type="submit">Delete this Discussion</button>
-  </form>
-<% } %>
-<% if (discussion.replies.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Reply</th>
-        <th>Medical Professional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% discussion.replies.forEach(function(reply) { %>
-        <tr>
-          <td><%= reply.createdAt.toLocaleDateString() %></td>
-          <td><%= reply.content %></td>
-          <td><%= reply.isDoctor ? "Yes" : "No" %></td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
-<% } else { %>
-  <h3>No Replies Yet</h3>
-<% } %>
-<ul>
-  <% discussion.replies?.forEach(reply => { %> 
-    <li>
-      <%= reply.content %> - <%= reply.author.topic %> 
-      <% if (reply.author.equals(user?.profile._id)) { %>
-        <form 
-          action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" 
-          method="POST"
-          class="inline"
-        >
-          <button class="btn" type="submit">Delete Comment</button>
-        </form>
-        <a href="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
-          <button class="btn">Edit Comment</button>
+  <img src="<%= discussion.author.avatar %>" alt="a picture of the discussion post's author">
+  <p>Discussion Posted by <%= user.profile.name %></p>
+  <h1>Health Concern: <%= discussion.topic %></h1>
+  <h2>Comments about the Health Concern: <%= discussion.content %></h2>
+  <h2>My symptoms are: <%= discussion.symptom %></h2>
+  <% if (discussion.author.equals(user?.profile._id)) { %>
+    <a href="/discussions/<%= discussion._id %>/edit">
+      <button class="btn">Edit this Discussion</button>
+    </a>
+    <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">
+        Delete this Discussion
+      </button>
+    </form>
+  <% } %>
+  <br>
+  <h2>Replies</h2>
+  <ul>
+    <% discussion.replies?.forEach(replies => { %>
+      <li>
+        <%= discussion.replies.author %>
+        <a href="/discussions/<%= discussion._id %>/replies/<%= replies._id %>/editReply">
+          <button class="btn">Edit Reply</button>
         </a>
-      <% } %> 
-    </li> 
-  <% }) %>
-</ul>
-
+      </li> 
+    <% }) %>
+  </ul>
+  <% if (user) { %>
+    <h3>Add a Comment</h3>
+    <form action="/discussions/<%= discussion._id %>/replies" method="POST">
+      <textarea name="content" placeholder="Reply Here..." ></textarea>
+      <br>
+      <h4>Check the box below if you are a medicial professional</h4>
+      <input type="checkbox" name="isDoctor" >
+      <br>
+      <button>Add Comment</button>
+    </form>
+  <% } %>
+</section>
 
 <%- include('../partials/footer') %>
