@@ -4,20 +4,22 @@
   --text-color: #364156;
   --button-color: #7D4E57;
   --secondary-background: #FFFDED;
+  --primary-font: 'Signika', sans-serif;
+  --secondary-font: 'Swanky and Moo Moo', cursive;
 }
 
 body {
-  font-family: 'Signika', sans-serif;
+  font-family: var(--primary-font);
   background-color: var(--background);
   color: var(--text-color);
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  font-size: 25px; 
+  font-size: 15px; 
 }
 
 section {
-  background-color: var(--button-background);
+  background-color: var(--secondary-background);
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;
@@ -28,28 +30,24 @@ section {
 h1 {
   font-size: 35px;
   margin-bottom: 20px;
-  color: var(--primary-dark);
-  border-bottom: 2px solid var(--button-color);
-  padding-bottom: 10px;
+  color: var(--dark);
 }
 
-input[type="text"],
-textarea {
+input[type="text"], textarea {
   padding: 12px; 
   border: 1px solid var(--button-color);
   background-color: var(--secondary-background);
   color: var(--text-color);
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
   margin-bottom: 15px;
   transition: background-color 0.3s, border 0.3s;
-  font-family: 'Swanky and Moo Moo', cursive; 
+  font-family: var(--secondary-font); 
   font-size: 20px; 
 }
 
-input[type="text"]:focus,
-textarea:focus {
-  background-color: var(--background-light);
+input[type="text"]:focus, textarea:focus {
+  background-color: var(--secondary-background);
   border-color: var(--dark);
   outline: none;
 }
@@ -58,13 +56,13 @@ button {
   background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
-  padding: 12px 20px;
+  padding: 9px 9px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Signika', sans-serif; 
-  font-size: 25px; 
+  font-family: var(--primary-font); 
+  font-size: 10px; 
 }
 
 button:hover {
@@ -80,4 +78,28 @@ button:active {
 button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.discussion-author, .discussion-text {
+  font-family: var(--primary-font);
+}
+
+.discussion-text {
+  font-size: 18px;
+}
+
+.ejs-comment {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+}
+
+.ejs-reply {
+  font-family: var(--secondary-font);
+  font-size: 15px;
 }

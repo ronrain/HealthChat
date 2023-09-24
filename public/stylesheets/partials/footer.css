@@ -1,0 +1,33 @@
+:root {
+  --dark: #11151C;
+  --background: #F5F3F5;
+  --text-color: #364156;
+  --button-color: #7D4E57;
+  --secondary-background: #FFFDED;
+  --primary-font: 'Signika', sans-serif;
+}
+
+
+.disclaimer-content {
+  text-align: center;
+  border: 2px solid var(--dark);
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  font-family: var(--primary-font);
+  color: var(--dark);
+}
+
+h5, h6 {
+  margin: 5px 0;
+  font-size: 10px;
+}
+
+h6 {
+  font-size: 7px;
+}

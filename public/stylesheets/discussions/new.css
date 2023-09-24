@@ -4,27 +4,23 @@
   --text-color: #364156;
   --button-color: #7D4E57;
   --secondary-background: #FFFDED;
+  --primary-font: 'Signika', sans-serif;
+  --secondary-font: 'Swanky and Moo Moo', cursive;
 }
 
 body {
-  font-family: 'Signika', sans-serif;
+  font-family: var(--primary-font);
   background-color: var(--background);
   color: var(--text-color);
 }
 
 textarea, input[type="text"] {
-  font-family: 'Swanky and Moo Moo', cursive;
+  font-family: var(--secondary-font);
   background-color: var(--secondary-background);
   border: 1px solid var(--dark);
   padding: 8px;
   margin: 8px 0;
   width: 100%;
-}
-
-section {
-  background-color: var(--secondary-background);
-  padding: 20px;
-  border: 1px solid var(--dark);
 }
 
 form {
@@ -48,7 +44,7 @@ button {
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Signika', sans-serif; 
+  font-family: var(--primary-font); 
   font-size: 25px; 
 }
 

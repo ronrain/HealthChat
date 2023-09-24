@@ -1,0 +1,15 @@
+:root {
+  --dark: #11151C;
+  --background: #F5F3F5;
+  --text-color: #364156;
+  --button-color: #7D4E57;
+  --secondary-background: #FFFDED;
+  --primary-font: 'Signika', sans-serif;
+  --secondary-font: 'Swanky and Moo Moo', cursive;
+}
+
+h1 {
+  font-family: var(--primary-font);
+  font-size: x-large;
+  color: var(--dark)
+}

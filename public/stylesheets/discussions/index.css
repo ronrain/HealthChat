@@ -4,10 +4,12 @@
   --text-color: #364156;
   --button-color: #7D4E57;
   --secondary-background: #FFFDED;
+  --primary-font: 'Signika', sans-serif;
+  --secondary-font: 'Swanky and Moo Moo', cursive;
 }
 
 body {
-  font-family: 'Signika', sans-serif;
+  font-family: var(--primary-font);
   background-color: var(--background);
   color: var(--text-color);
   margin: 0;
@@ -33,8 +35,7 @@ h1 {
   padding-bottom: 10px;
 }
 
-input[type="text"],
-textarea {
+input[type="text"], textarea {
   padding: 12px; 
   border: 1px solid var(--button-color);
   background-color: var(--secondary-background);
@@ -47,8 +48,7 @@ textarea {
   font-size: 20px; 
 }
 
-input[type="text"]:focus,
-textarea:focus {
+input[type="text"]:focus, textarea:focus {
   background-color: var(--background-light);
   border-color: var(--dark);
   outline: none;
@@ -63,7 +63,7 @@ button {
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Signika', sans-serif; 
+  font-family: var(--primary-font); 
   font-size: 25px; 
 }
 
@@ -80,4 +80,13 @@ button:active {
 button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
+}
+
+.ejs-post {
+  font-family: var(--secondary-font);
+  font-size: 25px;
+}
+
+a {
+  font-size: 20px;
 }
