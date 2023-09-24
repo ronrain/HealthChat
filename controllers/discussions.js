@@ -128,10 +128,10 @@ function editReply(req, res) {
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
     if (replies.author.equals(req.user.profile._id)) {
-      console.log(replies)
+      console.log(replies.comment)
       res.render('discussions/editReply', {
         discussion, 
-        replies,
+        replies: replies,
         title: 'Update Reply'
       })
     } else {
