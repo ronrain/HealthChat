@@ -7,52 +7,51 @@
 }
 
 body {
-  font-family: 'Signika', sans-serif;
-  font-size: 16px;
   background-color: var(--background);
-  color: var(--dark);
-  padding: 20px;
-  max-width: 100vw;
-  overflow-x: hidden;
+  font-family: 'Signika', sans-serif;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-family: 'Swanky and Moo Moo', cursive;
+}
+
+a {
+  color: var(--text-color);
+  font-family: 'Signika', sans-serif;
+}
+
+a:hover {
+  color: var(--button-color);
 }
 
 section {
+  border: 1px solid var(--dark);
   padding: 20px;
-  border-radius: 15px;
   background-color: var(--secondary-background);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 800px; 
+  border-radius: 8px;
 }
 
 h2, h3 {
-  margin-bottom: 20px;
-  color: var(--text-color);
+font-family: 'Signika', sans-serif;
+margin-top: 0;
 }
 
 ul {
   list-style-type: none;
-  padding-left: 0;
+  padding: 0;
 }
 
 li {
-  margin-bottom: 10px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  background-color: var(--dark);
-  color: var(--secondary-background);
-  transition: background-color 0.2s;
-}
-
-li:hover {
-  background-color: var(--button-color);
-}
-
-a {
+  margin: 10px 0;
   font-family: 'Swanky and Moo Moo', cursive;
-  color: var(--secondary-background);
-  text-decoration: none;
-  transition: color 0.2s;
 }
 
-a:hover {
-  color: var(--background);
+li a {
+  border-bottom: 1px dashed var(--text-color);
+  transition: color 0.3s ease;
 }

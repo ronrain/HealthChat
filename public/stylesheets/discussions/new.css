@@ -1,0 +1,54 @@
+:root {
+  --dark: #11151C;
+  --background: #F5F3F5;
+  --text-color: #364156;
+  --button-color: #7D4E57;
+  --secondary-background: #FFFDED;
+}
+
+body {
+  font-family: 'Signika', sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+textarea, input[type="text"] {
+  font-family: 'Swanky and Moo Moo', cursive;
+  background-color: var(--secondary-background);
+  border: 1px solid var(--dark);
+  padding: 8px;
+  margin: 8px 0;
+  width: 100%;
+}
+
+section {
+  background-color: var(--secondary-background);
+  padding: 20px;
+  border: 1px solid var(--dark);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+button {
+  font-family: 'Signika', sans-serif;
+  background-color: var(--button-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: darken(var(--button-color), 10%);
+}

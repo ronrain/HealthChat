@@ -22,7 +22,7 @@
     <% discussion.replies?.forEach(reply => { %>
       <li> 
         <a href="discussions/<%= discussion._id %>/replies/<%= reply._id %>"></a> <%= reply.comment %> - 
-        <%= reply.isDoctor ? 'Medical Professional' : 'Non-Medical Professional' %>
+        <%= reply.isDoctor ? 'Medical Professional' : 'Non-Medical Professional' %> - <%=  reply.author %>
         <% if (reply.author?._id.equals(user?.profile._id)) { %>
           <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST" class="inline">
             <button class="btn" type="submit">Delete Comment</button>
