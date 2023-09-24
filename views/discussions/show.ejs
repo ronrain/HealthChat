@@ -21,13 +21,30 @@
   <ul>
     <% discussion.replies?.forEach(reply => { %>
       <li> 
-        <a href="discussions/<%= discussion._id %>/replies/<%= reply._id %>"><%= reply.comment %></a> - 
+        <a href="discussions/<%= discussion._id %>/replies/<%= reply._id %>"></a> <%= reply.comment %> - 
         <%= reply.isDoctor ? 'Medical Professional' : 'Non-Medical Professional' %>
+        <% if (reply.author?._id.equals(user?.profile._id)) { %>
+          <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST" class="inline">
+            <button class="btn" type="submit">Delete Comment</button>
+          </form>
+          <a href="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
+          <button class="btn">Edit Comment</button>
+          </a>
+        <% } %>
       </li>
     <% }) %>
   </ul>
-  
-
+  <h2>Add a Comment:</h2>
+  <% if (user) { %>
+    <form action="/discussions/<%= discussion._id %>/replies" method="POST">
+        <textarea name="comment"></textarea><br>
+        <input type="checkbox"> Check the Box if you are a medical professional
+        <button>Add Comment</button>
+    </form>
+  <% } else { %>
+    <p>You need to log in to add a reply.</p>
+  <% } %>
 </section>
+
 
 <%- include('../partials/footer') %>
