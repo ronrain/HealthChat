@@ -1,4 +1,5 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/discussions/show.css">
 <%- include('../partials/nav') %>
 
 <section>
@@ -8,13 +9,11 @@
   <h2>Comments about the Health Concern: <%= discussion.content %></h2>
   <h2>My symptoms are: <%= discussion.symptom %></h2>
   <% if (discussion.author.equals(user?.profile._id)) { %>
-    <a href="/discussions/<%= discussion._id %>/edit">
+    <a id="discussion-show" href="/discussions/<%= discussion._id %>/edit">
       <button class="btn">Edit this Discussion</button>
     </a>
-    <form action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
-      <button class="btn" type="submit">
-        Delete this Discussion
-      </button>
+    <form id="discussion-show" action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
+      <button class="btn" type="submit">Delete this Discussion</button>
     </form>
   <% } %>
   <h2>Comments:</h2>
@@ -27,8 +26,9 @@
           <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST" class="inline">
             <button class="btn" type="submit">Delete Comment</button>
           </form>
-          <a href="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
-          <button class="btn">Edit Comment</button>
+          <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
+            <button class="btn">Edit Comment</button>
+          </form>
           </a>
         <% } %>
       </li>

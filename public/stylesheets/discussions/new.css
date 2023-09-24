@@ -40,15 +40,29 @@ label {
 }
 
 button {
-  font-family: 'Signika', sans-serif;
   background-color: var(--button-color);
-  color: white;
-  padding: 10px 15px;
+  color: var(--secondary-background);
   border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Signika', sans-serif; 
+  font-size: 25px; 
 }
 
 button:hover {
-  background-color: darken(var(--button-color), 10%);
+  background-color: var(--text-color);
+  color: var(--background);
+  transform: translateY(-2px); 
+}
+
+button:active {
+  transform: translateY(0); 
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
 }
