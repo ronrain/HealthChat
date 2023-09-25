@@ -19,7 +19,7 @@ body {
 }
 
 section {
-  background-color: var(--button-color);
+  background-color: var(--secondary-background);
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;

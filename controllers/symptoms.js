@@ -1,5 +1,19 @@
 import { Symptom } from '../models/symptom.js'
 
+function newSymptom(req, res) {
+  Symptom.find({})
+  .then(symptoms => {
+    res.render('symptoms/new', {
+      symptoms: symptoms,
+      title: 'Add Symptom'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/discussions')
+  })
+}
+
 function create(req, res) {
   Symptom.create(req.body)
   .then(symptom => {
@@ -12,5 +26,6 @@ function create(req, res) {
 }
 
 export {
+  newSymptom as new,
   create
 }
