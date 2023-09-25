@@ -6,31 +6,31 @@
   <h1>Have Some Updates on Your Health Discussion?</h1>
   <form action="/discussions/<%= discussion._id %>?_method=PUT" method="POST">
     <div id="update-health-concern">
-    <label>
-      Health Concern: 
-      <input 
-        type="text"
-        name="topic" 
-        value="<%= discussion.topic %>" 
-        autocomplete="off"
-      >
-    </label>
-    <label>
-      Content: 
-      <textarea 
-        name="content" 
-        autocomplete="off"
-      ><%= discussion.content %></textarea>
-    </label>
-    <label>
-      Symptoms: 
-      <input 
-        type="text"
-        name="symptom"
-        value="<%= discussion.symptom %>" 
-        autocomplete="off"
-      >
-    </label>
+      <label>
+        Health Concern: 
+        <input 
+          type="text"
+          name="topic" 
+          value="<%= discussion.topic %>" 
+          autocomplete="off"
+        >
+      </label>
+      <label>
+        Content: 
+        <textarea 
+          name="content" 
+          autocomplete="off"
+        ><%= discussion.content %></textarea>
+      </label>
+      <label>
+        Symptoms: 
+        <input 
+          type="text"
+          name="symptom"
+          value="<%= discussion.symptom %>" 
+          autocomplete="off"
+        >
+      </label>
     </div>
     <button type="submit">Save Changes</button>
   </form>

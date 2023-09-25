@@ -9,7 +9,8 @@
   <ul>
     <% discussions.forEach(discussion => { %>
       <li> 
-        <a href="/discussions/<%= discussion._id %>">DISCUSSION POST:</a> <span class="ejs-post"><%= discussion.topic %> with symptom(s): <%= discussion.symptom %></span>
+        <a href="/discussions/<%= discussion._id %>">DISCUSSION POST:</a> 
+        <span class="ejs-post"><%= discussion.topic %> with symptom(s): <%= discussion.symptom %></span>
       </li>
     <% }) %>
   </ul>

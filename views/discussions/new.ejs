@@ -2,25 +2,25 @@
 <link rel="stylesheet" href="/stylesheets/discussions/new.css">
 <%- include('../partials/nav') %>
 
-<section></section>
-<% if (user) { %>
-  <h2>Add a Discussion!</h2>
-  <form action="/discussions" method="POST">
-    <label>
-      Health Concern: 
-      <input type="text" name="topic" autocomplete="off">
-    </label>
-    <label>
-      Tell Us More: 
-      <textarea name="content" autocomplete="off"></textarea>
-    </label>
-    <label>
-      Symptoms: 
-      <input type="text" name="symptom" autocomplete="off">
-    </label>
-    <button type="submit">Add Discussion</button>
-  </form>
-<% } %>
+<section>
+  <% if (user) { %>
+    <h2>Add a Discussion!</h2>
+    <form action="/discussions" method="POST">
+      <label>
+        Health Concern: 
+        <input type="text" name="topic" autocomplete="off">
+      </label>
+      <label>
+        Tell Us More: 
+        <textarea name="content" autocomplete="off"></textarea>
+      </label>
+      <label>
+        Symptoms: 
+        <input type="text" name="symptom" autocomplete="off">
+      </label>
+      <button type="submit">Add Discussion</button>
+    </form>
+  <% } %>
 </section>
 
 <%- include('../partials/footer') %>

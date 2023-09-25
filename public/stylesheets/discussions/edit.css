@@ -19,7 +19,7 @@ body {
 }
 
 section {
-  background-color: var(--button-background);
+  background-color: var(--secondary-background);
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;
@@ -30,7 +30,7 @@ section {
 h1 {
   font-size: 35px;
   margin-bottom: 20px;
-  color: var(--primary-dark);
+  color: var(--dark);
   border-bottom: 2px solid var(--button-color);
   padding-bottom: 10px;
 }
@@ -41,7 +41,7 @@ input[type="text"], textarea {
   background-color: var(--secondary-background);
   color: var(--text-color);
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
   margin-bottom: 15px;
   transition: background-color 0.3s, border 0.3s;
   font-family: var(--secondary-font); 
@@ -49,7 +49,7 @@ input[type="text"], textarea {
 }
 
 input[type="text"]:focus, textarea:focus {
-  background-color: var(--background-light);
+  background-color: var(--secondary-background);
   border-color: var(--dark);
   outline: none;
 }

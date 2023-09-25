@@ -25,7 +25,7 @@
         <form action="discussions/<%= discussion._id %>/replies/<%= reply._id %>"> 
           <span class="ejs-reply"> 
             <%= reply.comment %> - 
-            <%= reply.isDoctor ? 'Medical Professional' : 'Non-Medical Professional' %> - <%=  reply.author %>  
+            <%= reply.isDoctor ? 'Medical Professional' : 'Non-Medical Professional' %> | <%=  reply.author.name %>  
           </span>
         </form>
         <% if (reply.author?._id.equals(user?.profile._id)) { %>
@@ -45,7 +45,7 @@
   <% if (user) { %>
     <form action="/discussions/<%= discussion._id %>/replies" method="POST">
       <textarea name="comment"></textarea><br>
-      <input type="checkbox"> Check the Box if you are a medical professional
+      <input type="checkbox" name="isDoctor" value="true" <%= user.isDoctor ? 'checked' : '' %> <span> Check the Box if you are a medical professional</span>
       <button>Add Comment</button>
     </form>
   <% } else { %>
