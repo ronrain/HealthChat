@@ -16,7 +16,11 @@
       </label>
       <label>
         Symptoms: 
-        <input type="text" name="symptom" autocomplete="off">
+        <select >
+          <% symptoms.forEach(symptom => { %>
+            <option value=" <%= symptom._id %>"><%= symptom.name %></option
+          <% }) %>
+        </select>
       </label>
       <button type="submit">Add Discussion</button>
     </form>

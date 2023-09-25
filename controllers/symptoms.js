@@ -3,7 +3,7 @@ import { Symptom } from '../models/symptom.js'
 function newSymptom(req, res) {
   Symptom.find({})
   .then(symptoms => {
-    res.render('symptoms/new', {
+    res.render('discussions/new', {
       symptoms: symptoms,
       title: 'Add Symptom'
     })

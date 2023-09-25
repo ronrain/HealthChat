@@ -13,7 +13,7 @@ const replySchema = new Schema({
 const discussionSchema = new Schema({
   topic: String,
   content: String,
-  symptom: String,
+  symptom: [{type: Schema.Types.ObjectId, ref: 'Symptom'}],
   author: { type: Schema.Types.ObjectId, ref: "Profile" },
   replies: [replySchema]
 }, {

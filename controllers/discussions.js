@@ -1,8 +1,17 @@
 import { Discussion } from '../models/discussion.js'
+import { Symptom } from '../models/symptom.js';
 
 function newDiscussion(req, res) {
-  res.render('discussions/new', {
-    title: 'Add Discussion'
+  Symptom.find({})
+  .then(symptoms => {
+    res.render('discussions/new', {
+      title: 'Add Discussion',
+      symptoms: symptoms
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
   })
 }
 

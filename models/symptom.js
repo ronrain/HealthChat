@@ -8,7 +8,7 @@ const symptomSchema = new Schema({
   timestamps: true
 })
 
-const Symptom = mongoose.model('Performer', symptomSchema)
+const Symptom = mongoose.model('Symptom', symptomSchema)
 
 export {
   Symptom

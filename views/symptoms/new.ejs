@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-<!-- <link rel="stylesheet" href="/stylesheets/performers/new.css" /> -->
+<link rel="stylesheet" href="/stylesheets/symptoms/new.css" />
 <%- include('../partials/nav') %>
 
 <main>
@@ -7,7 +7,7 @@
   <p>Please first ensure that the Symptom is not in the dropdown
     <select>
       <% symptoms.forEach(function(symptom) { %>
-        <option><%= symptom.name %></option>
+        <option value="<%= symptom.name %>"> <%= symptom.name %></option>
       <% }) %>
     </select>
   </p>
