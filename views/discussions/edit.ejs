@@ -27,7 +27,7 @@
         <% symptoms.forEach(symptom => { %>
           <div>
             <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
-            <label for="symptom-edit"><%= discussion.symptom %></label>
+            <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
           </div>
         <% }) %>
       </label>

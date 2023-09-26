@@ -22,7 +22,7 @@ function create(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/symptoms/new')
+    res.redirect('/')
   })
 }
 
@@ -39,7 +39,7 @@ function show(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/symptoms')
+    res.redirect('/')
   })
 }
 
@@ -53,7 +53,7 @@ function edit(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/symptoms')
+    res.redirect('/')
   })
 }
 
@@ -71,7 +71,7 @@ function update(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect(`/symptoms`)
+    res.redirect('/')
   })
 }
 
@@ -89,7 +89,7 @@ function deleteSymptom(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/symptoms')
+    res.redirect('/')
   })
 }
 
@@ -103,7 +103,7 @@ function newSymptom(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect("/discussions")
+    res.redirect("/")
   })
 }
 

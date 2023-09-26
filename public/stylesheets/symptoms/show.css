@@ -12,6 +12,10 @@ body {
   font-family: var(--primary-font);
   background-color: var(--background);
   color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 15px; 
 }
 
 section {
@@ -23,38 +27,42 @@ section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-textarea, input[type="text"] {
-  font-family: var(--secondary-font);
+h1 {
+  font-size: 35px;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+
+input[type="text"], textarea {
+  padding: 12px; 
+  border: 1px solid var(--button-color);
   background-color: var(--secondary-background);
-  border: 1px solid var(--dark);
-  padding: 8px;
-  margin: 8px 0;
+  color: var(--text-color);
+  border-radius: 5px;
   width: 90%;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, border 0.3s;
+  font-family: var(--secondary-font); 
+  font-size: 20px; 
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+input[type="text"]:focus, textarea:focus {
+  background-color: var(--secondary-background);
+  border-color: var(--dark);
+  outline: none;
 }
 
 button {
   background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
-  padding: 12px 20px;
+  padding: 9px 9px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: var(--primary-font); 
-  font-size: 25px; 
+  font-size: 10px; 
 }
 
 button:hover {
@@ -72,6 +80,26 @@ button:focus {
   box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
 }
 
-.btn {
-  width: 15%;
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.discussion-author, .discussion-text {
+  font-family: var(--primary-font);
+}
+
+.discussion-text {
+  font-size: 18px;
+}
+
+.ejs-comment {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+}
+
+.ejs-reply {
+  font-family: var(--secondary-font);
+  font-size: 15px;
 }

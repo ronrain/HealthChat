@@ -10,9 +10,12 @@
     <% discussions.forEach(discussion => { %>
       <li> 
         <a href="/discussions/<%= discussion._id %>">DISCUSSION POST:</a> 
-        <span class="ejs-post"><%= discussion.topic %> with symptom(s): <%= discussion.symptoms.name %></span>
+        <span class="ejs-post">
+          <%= discussion.topic %> with symptom(s):
+            <%= discussion.symptoms.map(symptom => symptom.name).join(' - ') %>
+          <% }) %>
+        </span>
       </li>
-    <% }) %>
   </ul>
 </section>
 

@@ -21,10 +21,15 @@ function newDiscussion(req, res) {
 
 function index(req, res) {
   Discussion.find({})
+  .populate('symptoms')
   .then(discussions => {
-    res.render('discussions/index', {
-      discussions: discussions,
-      title: 'All Discussions'
+    Symptom.find({})
+    .then(symptoms => {
+      res.render('discussions/index', {
+        discussions: discussions,
+        symptoms: symptoms,
+        title: 'All Discussions'
+      })
     })
   })
   .catch(err => {
@@ -71,6 +76,7 @@ function show(req, res) {
 
 function edit(req, res) {
   Discussion.findById(req.params.discussionId)
+  .populate('symptoms')
   .then(discussion => {
     Symptom.find({_id: {$nin: discussion.symptoms}})
     .then(symptoms => {
@@ -167,7 +173,7 @@ function editReply(req, res) {
 }
 
 function updateReply(req, res) {
-  Discussion.findByIdAndUpdate(req.params.discussionId)
+  Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
     if (replies.author.equals(req.user.profile._id)) {
@@ -192,7 +198,7 @@ function updateReply(req, res) {
 }
 
 function deleteReply(req, res) {
-  Discussion.findByIdAndDelete(req.params.discussionId)
+  Discussion.findById(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
     if (replies.author.equals(req.user.profile._id)) {
@@ -203,7 +209,7 @@ function deleteReply(req, res) {
       })
       .catch(err => {
         console.log(err)
-        res.redirect('/discussions')
+        res.redirect('/discussions/')
       })
     } else {
       throw new Error('🚫 Not authorized 🚫')
@@ -225,12 +231,12 @@ function addToSymptoms(req, res) {
 		})
     .catch(err => {
       console.log(err)
-      res.redirect("/discussions")
+      res.redirect("/")
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect("/discussions")
+    res.redirect("/")
   })
 }
 
