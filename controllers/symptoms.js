@@ -87,12 +87,29 @@ function show(req, res) {
   })
 }
 
-
+function deleteSymptom(req, res) {
+  Symptom.findById(req.params.symptomId)
+  .then(symptom => {
+    if (symptom.author.equals(req.user.profile._id)) {
+      symptom.deleteOne()
+      .then(() => {
+        res.redirect('/symptoms')
+      })
+    } else {
+      throw new Error ('🚫 Not authorized 🚫')
+    }   
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/symptoms')
+  })
+}
 export {
   newSymptom as new,
   create,
   index,
   edit,
   update,
-  show
+  show,
+  deleteSymptom as delete
 }

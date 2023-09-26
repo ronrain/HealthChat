@@ -5,5 +5,13 @@
 	<p>From the kitchen of <%= symptom.author.name %>...</p>
   <h1><%= symptom.name %></h1>
 </section>
+<% if (symptom.author.equals(user?.profile._id)) { %>
+  <a href="/symptoms/<%= symptom._id %>/edit">
+    <button class="btn">Edit Symptom</button>
+  </a>
+  <form action="/symptoms/<%= symptom._id %>?_method=DELETE" method="POST">
+    <button class="btn" type="submit">Delete Symptom</button>
+  </form>
+  <% } %>
 
 <%- include('../partials/footer') %>

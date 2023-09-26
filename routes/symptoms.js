@@ -10,6 +10,7 @@ router.get('/:symptomId/edit', isLoggedIn, symptomsCtrl.edit)
 router.get('/:symptomId', symptomsCtrl.show)
 router.post('/', isLoggedIn, symptomsCtrl.create)
 router.put('/:symptomId', isLoggedIn, symptomsCtrl.update)
+router.delete('/:symptomId', isLoggedIn, symptomsCtrl.delete)
 
 export {
   router
