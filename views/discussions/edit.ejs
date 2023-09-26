@@ -26,7 +26,9 @@
         Symptoms: 
         <% symptoms.forEach(symptom => { %>
           <div>
-            <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
+            <input type="checkbox" name="symptoms" value="<%= symptom._id %>"
+            <% if(discussion.symptoms.some(symp => symp._id.equals(symptom._id))) { %>checked<% } %>
+            >
             <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
           </div>
         <% }) %>

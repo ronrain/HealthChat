@@ -4,17 +4,17 @@
 
 <section>
   <% if (user) { %>
-    <h2>Add a Discussion!</h2>
+    <h1>Add a Discussion!</h1>
     <form action="/discussions" method="POST">
       <label>
-        Health Concern: 
+      <h3>Health Concern:</h3> 
         <input type="text" name="topic" autocomplete="off">
       </label>
       <label>
-        Tell Us More: 
+      <h3>Tell Us More: </h3>
         <textarea name="content" autocomplete="off"></textarea>
       </label>
-      <div>Symptoms:</div>
+      <h3>Symptoms:</h3>
       <% symptoms.forEach(symptom => { %>
         <div>
           <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
