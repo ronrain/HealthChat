@@ -72,10 +72,27 @@ function update(req, res) {
   })
 }
 
+function show(req, res) {
+  Symptom.findById(req.params.symptomId)
+  .populate("author")
+  .then(symptom => {
+    res.render('symptoms/show', {
+      symptom: symptom,
+      title: "Symptoms"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/symptoms')
+  })
+}
+
+
 export {
   newSymptom as new,
   create,
   index,
   edit,
-  update
+  update,
+  show
 }
