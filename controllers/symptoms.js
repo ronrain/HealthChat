@@ -1,16 +1,16 @@
 import { Symptom } from '../models/symptom.js'
 
-function newSymptom(req, res) {
+function index(req, res) {
   Symptom.find({})
   .then(symptoms => {
-    res.render('symptoms/new', {
-      title: 'Add Symptom',
+    res.render('symptoms/index', {
       symptoms: symptoms,
+      title: "Symptoms List"
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect("/discussions")
+    res.redirect("/")
   })
 }
 
@@ -18,11 +18,28 @@ function create(req, res) {
   req.body.author = req.user.profile._id
   Symptom.create(req.body)
   .then(symptom => {
-    res.redirect('/symptoms/new')
+    res.redirect('/symptoms')
   })
   .catch(err => {
     console.log(err)
     res.redirect('/symptoms/new')
+  })
+}
+
+function show(req, res) {
+  Symptom.findById(req.params.symptomId)
+  .populate("author")
+  .then(symptom => {
+    console.log('Symptom:', symptom)
+    console.log('user:', req.user)
+    res.render('symptoms/show', {
+      symptom: symptom,
+      title: "Symptoms"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/symptoms')
   })
 }
 
@@ -40,22 +57,8 @@ function edit(req, res) {
   })
 }
 
-function index(req, res) {
-  Symptom.find({})
-  .then(symptoms => {
-    res.render('symptoms/index', {
-      symptoms:symptoms,
-      title: "Symptoms List"
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect("/")
-  })
-}
-
 function update(req, res) {
-  Symptom.findById(req.params.symptomId)
+  Symptom.findByIdAndUpdate(req.params.symptomId)
   .then(symptom => {
     if (symptom.author.equals(req.user.profile._id)) {
       symptom.updateOne(req.body)
@@ -72,23 +75,8 @@ function update(req, res) {
   })
 }
 
-function show(req, res) {
-  Symptom.findById(req.params.symptomId)
-  .populate("author")
-  .then(symptom => {
-    res.render('symptoms/show', {
-      symptom: symptom,
-      title: "Symptoms"
-    })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/symptoms')
-  })
-}
-
 function deleteSymptom(req, res) {
-  Symptom.findById(req.params.symptomId)
+  Symptom.findByIdAndDelete(req.params.symptomId)
   .then(symptom => {
     if (symptom.author.equals(req.user.profile._id)) {
       symptom.deleteOne()
@@ -104,12 +92,27 @@ function deleteSymptom(req, res) {
     res.redirect('/symptoms')
   })
 }
+
+function newSymptom(req, res) {
+  Symptom.find({})
+  .then(symptoms => {
+    res.render('symptoms/new', {
+      title: 'Add Symptom',
+      symptoms: symptoms,
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/discussions")
+  })
+}
+
 export {
-  newSymptom as new,
-  create,
   index,
+  create,
+  show,
   edit,
   update,
-  show,
-  deleteSymptom as delete
+  deleteSymptom as delete,
+  newSymptom as new,
 }

@@ -23,7 +23,7 @@ function index(req, res) {
   Discussion.find({})
   .then(discussions => {
     res.render('discussions/index', {
-      discussions,
+      discussions: discussions,
       title: 'All Discussions'
     })
   })
@@ -34,12 +34,10 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.body, "discussion check")
   req.body.author = req.user.profile._id
   req.body.isDoctor = !!req.body.isDoctor
   Discussion.create(req.body)
   .then(discussion => {
-    console.log(discussion, "symptom check")
     res.redirect(`/discussions/${discussion._id}`)
   })
   .catch(err => {
@@ -76,7 +74,7 @@ function edit(req, res) {
   .then(discussion => {
     Symptom.find({_id: {$nin: discussion.symptoms}})
     .then(symptoms => {
-      res.render('discussions/show', {
+      res.render('discussions/edit', {
         title: "Discussion Detail",
         discussion: discussion,
         symptoms: symptoms,

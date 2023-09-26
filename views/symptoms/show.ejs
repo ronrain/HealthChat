@@ -2,8 +2,7 @@
 <%- include('../partials/nav') %>
 
 <section>
-	<p>From the kitchen of <%= symptom.author.name %>...</p>
-  <h1><%= symptom.name %></h1>
+  <h1>Symptom Page for: <%= symptom.name %></h1>
 </section>
 <% if (symptom.author.equals(user?.profile._id)) { %>
   <a href="/symptoms/<%= symptom._id %>/edit">

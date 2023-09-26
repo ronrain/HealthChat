@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 const replySchema = new Schema({
   comment: String,
   isDoctor: Boolean,
-  author: { type: Schema.Types.ObjectId, ref: "Profile" }
+  author: { type: Schema.Types.ObjectId, ref: 'Profile' }
 }, {
   timestamps: true
 })
@@ -13,7 +13,7 @@ const replySchema = new Schema({
 const discussionSchema = new Schema({
   topic: {type: String, required: true},
   content: String,
-  symptoms: [{type: Schema.Types.ObjectId, required: true, ref: "Symptom"}],
+  symptoms: [{type: Schema.Types.ObjectId, ref: "Symptom"}],
   author: { type: Schema.Types.ObjectId, ref: "Profile" },
   replies: [replySchema]
 }, {
