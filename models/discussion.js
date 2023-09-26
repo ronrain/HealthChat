@@ -11,9 +11,9 @@ const replySchema = new Schema({
 })
 
 const discussionSchema = new Schema({
-  topic: String,
+  topic: {type: String, required: true},
   content: String,
-  symptom: [{type: Schema.Types.ObjectId, ref: 'Symptom'}],
+  symptom: [{type: Schema.Types.ObjectId, required: true, ref: "Symptom"}],
   author: { type: Schema.Types.ObjectId, ref: "Profile" },
   replies: [replySchema]
 }, {

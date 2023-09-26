@@ -14,14 +14,13 @@
         Tell Us More: 
         <textarea name="content" autocomplete="off"></textarea>
       </label>
-      <label>
-        Symptoms: 
-        <select >
-          <% symptoms.forEach(symptom => { %>
-            <option value=" <%= symptom._id %>"><%= symptom.name %></option
-          <% }) %>
-        </select>
-      </label>
+      <div>Symptoms:</div>
+
+      <select name="symptoms[]">
+        <% symptoms.forEach(symptom => { %>
+          <option value="<%= symptom._id %>"><%= symptom.name %></option>
+        <% }) %>
+      </select>
       <button type="submit">Add Discussion</button>
     </form>
   <% } %>

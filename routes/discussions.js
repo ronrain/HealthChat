@@ -11,6 +11,7 @@ router.get('/:discussionId/replies/:replyId/edit', isLoggedIn, discussionsCtrl.e
 router.get('/:discussionId', discussionsCtrl.show)
 router.post('/', isLoggedIn, discussionsCtrl.create)
 router.post('/:discussionId/replies', isLoggedIn, discussionsCtrl.addReply)
+router.post('/:discussionId/symptoms', discussionsCtrl.addToSymptoms)
 router.put('/:discussionId', isLoggedIn, discussionsCtrl.update)
 router.put('/:discussionId/replies/:replyId', isLoggedIn, discussionsCtrl.updateReply)
 router.delete('/:discussionId', isLoggedIn, discussionsCtrl.delete)

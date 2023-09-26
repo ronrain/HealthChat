@@ -14,7 +14,7 @@ body {
   color: var(--text-color);
 }
 
-textarea, input[type="text"] {
+select, input[type="text"] {
   font-family: var(--secondary-font);
   background-color: var(--secondary-background);
   border: 1px solid var(--dark);

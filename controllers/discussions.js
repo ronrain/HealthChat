@@ -2,11 +2,15 @@ import { Discussion } from '../models/discussion.js'
 import { Symptom } from '../models/symptom.js';
 
 function newDiscussion(req, res) {
-  Symptom.find({})
-  .then(symptoms => {
-    res.render('discussions/new', {
-      title: 'Add Discussion',
-      symptoms: symptoms
+  Discussion.find({})
+  .then(discussion =>{
+    Symptom.find({})
+    .then(symptoms => {
+      res.render('discussions/new', {
+        title: 'Add Discussion',
+        symptoms: symptoms,
+        discussion: discussion
+      })
     })
   })
   .catch(err => {
@@ -34,7 +38,7 @@ function create(req, res) {
   req.body.isDoctor = !!req.body.isDoctor
   Discussion.create(req.body)
   .then(discussion => {
-    res.redirect('/discussions')
+    res.redirect(`/discussions/${discussion._id}`)
   })
   .catch(err => {
     console.log(err)
@@ -46,12 +50,17 @@ function show(req, res) {
   Discussion.findById(req.params.discussionId)
   .populate([
     {path: 'author'},
-    {path: 'replies.author'}
+    {path: 'replies.author'},
+    {path: 'symptom'}
   ])
   .then(discussion => {
-    res.render('discussions/show', {
-      title: "Discussion Detail",
-      discussion: discussion
+    Symptom.find({_id: {$nin: discussion.symptom}})
+    .then(symptoms => {
+      res.render('discussions/show', {
+        title: "Discussion Detail",
+        discussion: discussion,
+        symptoms: symptoms,
+      })
     })
   })
   .catch(err => {
@@ -154,7 +163,7 @@ function editReply(req, res) {
 }
 
 function updateReply(req, res) {
-  Discussion.findById(req.params.discussionId)
+  Discussion.findByIdAndUpdate(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
     if (replies.author.equals(req.user.profile._id)) {
@@ -179,7 +188,7 @@ function updateReply(req, res) {
 }
 
 function deleteReply(req, res) {
-  Discussion.findById(req.params.discussionId)
+  Discussion.findByIdAndDelete(req.params.discussionId)
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
     if (replies.author.equals(req.user.profile._id)) {
@@ -202,6 +211,25 @@ function deleteReply(req, res) {
   })
 }
 
+function addToSymptoms(req, res) {
+  Discussion.findById(req.params.discussionId)
+  .then(discussion => {
+    discussion.symptom.push(req.body.symptomId)
+    discussion.save()
+		.then(() => {
+		  res.redirect(`/discussions/${discussion._id}`)
+		})
+    .catch(err => {
+      console.log(err)
+      res.redirect("/discussions")
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/discussions")
+  })
+}
+
 export {
   newDiscussion as new,
   index,
@@ -213,5 +241,6 @@ export {
   addReply,
   editReply,
   updateReply,
-  deleteReply
+  deleteReply,
+  addToSymptoms
 }
