@@ -74,9 +74,13 @@ function show(req, res) {
 function edit(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    res.render('discussions/edit', {
-      discussion,
-      title: "Edit Discussion"
+    Symptom.find({_id: {$nin: discussion.symptoms}})
+    .then(symptoms => {
+      res.render('discussions/show', {
+        title: "Discussion Detail",
+        discussion: discussion,
+        symptoms: symptoms,
+      })
     })
   })
   .catch(err => {

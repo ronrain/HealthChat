@@ -24,12 +24,12 @@
       </label>
       <label>
         Symptoms: 
-        <input 
-          type="text"
-          name="symptom"
-          value="<%= discussion.symptoms %>" 
-          autocomplete="off"
-        >
+        <% symptoms.forEach(symptom => { %>
+          <div>
+            <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
+            <label for="symptom-edit"><%= discussion.symptom %></label>
+          </div>
+        <% }) %>
       </label>
     </div>
     <button type="submit">Save Changes</button>

@@ -4,6 +4,7 @@ import * as symptomsCtrl from '../controllers/symptoms.js'
 
 const router = Router()
 
+router.get('/', symptomsCtrl.index)
 router.get('/new', symptomsCtrl.new)
 router.post('/', symptomsCtrl.create)
 
