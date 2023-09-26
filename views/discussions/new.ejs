@@ -15,11 +15,17 @@
         <textarea name="content" autocomplete="off"></textarea>
       </label>
       <div>Symptoms:</div>
+      <% symptoms.forEach(symptom => { %>
+        <div>
+            <input type="checkbox" id="symptom-<%= symptom._id %>" name="symptoms" value="<%= symptom._id %>">
+            <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
+        </div>
+    <% }) %>
 
-      <select name="symptoms[]">
+      <!-- <select name="symptoms" multiple>
         <% symptoms.forEach(symptom => { %>
           <option value="<%= symptom._id %>"><%= symptom.name %></option>
-        <% }) %>
+        <% }) %> -->
       </select>
       <button type="submit">Add Discussion</button>
     </form>

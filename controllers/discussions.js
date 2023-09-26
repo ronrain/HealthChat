@@ -34,10 +34,12 @@ function index(req, res) {
 }
 
 function create(req, res) {
+  console.log(req.body, "discussion check")
   req.body.author = req.user.profile._id
   req.body.isDoctor = !!req.body.isDoctor
   Discussion.create(req.body)
   .then(discussion => {
+    console.log(discussion, "symptom check")
     res.redirect(`/discussions/${discussion._id}`)
   })
   .catch(err => {
@@ -51,10 +53,10 @@ function show(req, res) {
   .populate([
     {path: 'author'},
     {path: 'replies.author'},
-    {path: 'symptom'}
+    {path: 'symptoms'}
   ])
   .then(discussion => {
-    Symptom.find({_id: {$nin: discussion.symptom}})
+    Symptom.find({_id: {$nin: discussion.symptoms}})
     .then(symptoms => {
       res.render('discussions/show', {
         title: "Discussion Detail",
@@ -214,7 +216,7 @@ function deleteReply(req, res) {
 function addToSymptoms(req, res) {
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
-    discussion.symptom.push(req.body.symptomId)
+    discussion.symptoms.push(req.body.symptomId)
     discussion.save()
 		.then(() => {
 		  res.redirect(`/discussions/${discussion._id}`)

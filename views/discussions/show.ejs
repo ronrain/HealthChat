@@ -7,7 +7,12 @@
   <p class="discussion-author">Discussion Posted by <span class="ejs-comment"><%= discussion.author.name %></span></p>
   <h1 class="discussion-text">Health Concern: <span class="ejs-comment"><%= discussion.topic %></span></h1>
   <h2 class="discussion-text">Comments about the Health Concern: <span class="ejs-comment"><%= discussion.content %></span></h2>
-  <h2 class="discussion-text">My symptoms are: <span class="ejs-comment"><%= discussion.symptom.name %></span></h2>
+  <h2 class="discussion-text">My symptoms are:</h2> 
+  <ul>
+    <% discussion.symptoms.forEach(symptom => { %>
+      <li> <%= symptom.name %></li>
+    <% }) %>
+  </ul>
   <% if (discussion.author.equals(user?.profile._id)) { %>
     <div class="btn-container">
       <a class="discussion-show" href="/discussions/<%= discussion._id %>/edit">
