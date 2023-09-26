@@ -1,0 +1,14 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>Symptoms</h1>
+  <h2>All Symptoms</h2>
+  <ul>
+    <% symptoms.forEach(symptom => { %>
+      <li><%= symptom.name %></li>
+    <% }) %>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>

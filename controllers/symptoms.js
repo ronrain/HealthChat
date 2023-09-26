@@ -15,6 +15,7 @@ function newSymptom(req, res) {
 }
 
 function create(req, res) {
+  req.body.author = req.user.profile._id
   Symptom.create(req.body)
   .then(symptom => {
     res.redirect('/symptoms/new')
@@ -25,23 +26,17 @@ function create(req, res) {
   })
 }
 
-function editSymptom(req, res) {
+function edit(req, res) {
   Symptom.findById(req.params.symptomId)
   .then(symptom => {
-    const symp = symptom.id(req.params.commentId)
-    if (comment.author.equals(req.user.profile._id)) {
-      res.render('tacos/editComment', {
-        taco, 
-        comment,
-        title: 'Update Comment'
-      })
-    } else {
-      throw new Error('🚫 Not authorized 🚫')
-    }
+    res.render('symptoms/edit', {
+      symptom: symptom,
+      title: "Edit Symptom"
+    })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/tacos')
+    res.redirect('/symptoms')
   })
 }
 
@@ -59,8 +54,28 @@ function index(req, res) {
   })
 }
 
+function update(req, res) {
+  Symptom.findById(req.params.symptomId)
+  .then(symptom => {
+    if (symptom.author.equals(req.user.profile._id)) {
+      symptom.updateOne(req.body)
+      .then(()=> {
+        res.redirect(`/symptoms/${symptom._id}`)
+      })
+    } else {
+      throw new Error('🚫 Not authorized 🚫')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/symptoms`)
+  })
+}
+
 export {
   newSymptom as new,
   create,
-  index
+  index,
+  edit,
+  update
 }

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 
 const symptomSchema = new Schema({
   name: { type: String, required: true },
+  author: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true
 })
