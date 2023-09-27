@@ -1,65 +1,41 @@
-# MEN Stack with OAuth Template
+# HealthChat
 
-This is a MEN Stack template that includes OAuth.
+## Objective
 
-Use this to go build things! 🚀
+Sports fans watch their favorite teams and yell at the players what they would do if they were playing. But, is your strategy really the best option? Now it's your turn to go out and play the game and prove that you will score and win the game. You must choose the correct option to continue onto the next situation to eventually score a goal. But be careful! If you choose the wrong option, there's a chance you might make a mistake and lose the game for your team. 
 
-## To Use This Template
+## Features
+- User authentication.
+- CRUD operations for discussions and symptoms.
+- Nested replies within discussions.
+- Ability to tag symptoms within discussions.
+- Role-based features (e.g., doctors).
 
-__Replace `<name-of-your-app-here>` (including the `<` and `>`) in the commands below with the name of your app!__
 
-```bash
-git clone https://github.com/SEI-Remote/men-stack-oauth-template.git <name-of-your-app-here>
-cd <name-of-your-app-here>
-```
+### Start playing [HERE]()
 
-Once you are in the project directory:
+## Screenshots
 
-```bash
-rm -rf .git
-```
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
+## Technologies Used
+- JavaScript
+- CSS
+- EJS
+- Mongoose
+- Node.js
+- MongoDB
+- HTML
+- Git
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
+## Attributions
+[Favicon Generator](https://favicon.io/favicon-generator/)
+## Future Goals
+- [ ] Add a Profile section that includes the emotional well-being of users
+- [ ] Add a severity scale for the symptoms
+- [ ] Create a helpful checkbox that the discussion creator and other users can check if the reply was helpful
+- [ ] Make it compatible for mobile devices
 
-Re-initialize a git repository:
 
-```bash
-git init
-```
 
-Create a repo for this project on GitHub and add that remote to your project with `git remote add origin Your-repo-URL-here`.
 
-Run npm i to fetch the template's dependencies:
 
-```bash
-npm i
-```
-
-touch a .env file:
-
-```bash
-touch .env
-```
-
-Fill it with the following:
-
-```
-DATABASE_URL=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-SESSION_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-Replace the `DATABASE_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_SECRET`, and `SESSION_SECRET` with values that you provide.
-
-Delete this `README.md` file and finally, make an initial commit:
-
-```bash
-git add .
-git commit -m "initial commit"
-git push origin main
-```
-
-You're done!

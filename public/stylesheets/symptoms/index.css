@@ -44,3 +44,14 @@ span {
   font-family: var(--secondary-font);
   font-size: 30px;
 }
+
+.index-container {
+  display: flex;
+}
+
+.index-item {
+  height: 100px;
+  width: 100px;
+}
+
+
