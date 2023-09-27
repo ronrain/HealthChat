@@ -35,58 +35,12 @@ h1 {
   padding-bottom: 10px;
 }
 
-input[type="text"], textarea {
-  padding: 12px; 
-  border: 1px solid var(--button-color);
-  background-color: var(--secondary-background);
-  color: var(--text-color);
-  border-radius: 5px;
-  width: 100%;
-  margin-bottom: 15px;
-  transition: background-color 0.3s, border 0.3s;
-  font-family: 'Swanky and Moo Moo', cursive; 
-  font-size: 20px; 
-}
-
-input[type="text"]:focus, textarea:focus {
-  background-color: var(--secondary-background);
-  border-color: var(--dark);
-  outline: none;
-}
-
-button {
-  background-color: var(--button-color);
-  color: var(--secondary-background);
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: var(--primary-font); 
-  font-size: 25px; 
-}
-
-button:hover {
-  background-color: var(--text-color);
-  color: var(--background);
-  transform: translateY(-2px); 
-}
-
-button:active {
-  transform: translateY(0); 
-}
-
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
-}
-
-.ejs-post {
-  font-family: var(--secondary-font);
-  font-size: 25px;
-}
-
 a {
+  font-family: var(--primary-font);
   font-size: 20px;
+}
+
+span {
+  font-family: var(--secondary-font);
+  font-size: 30px;
 }

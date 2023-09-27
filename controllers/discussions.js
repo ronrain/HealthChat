@@ -78,7 +78,7 @@ function edit(req, res) {
   Discussion.findById(req.params.discussionId)
   .populate('symptoms')
   .then(discussion => {
-    Symptom.find({_id: {$nin: discussion.symptoms}})
+    Symptom.find({})
     .then(symptoms => {
       res.render('discussions/edit', {
         title: "Discussion Detail",
@@ -156,7 +156,6 @@ function editReply(req, res) {
   .then(discussion => {
     const replies = discussion.replies.id(req.params.replyId)
     if (replies.author.equals(req.user.profile._id)) {
-      console.log(replies.comment)
       res.render('discussions/editReply', {
         discussion, 
         replies: replies,

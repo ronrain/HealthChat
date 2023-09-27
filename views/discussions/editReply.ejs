@@ -8,7 +8,7 @@
     action="/discussions/<%= discussion._id %>/replies/<%= replies._id %>?_method=PUT"
     method="POST"
   >
-    <div id="editReply-comment"></div>  
+    <div id="editReply-comment"> 
     <label>
       Content: 
       <textarea
@@ -22,7 +22,7 @@
     <div id="editReply-isDoctor">  
       <label>
         <input type="checkbox" name="isDoctor" value="true" <%= replies.isDoctor ? 'checked' : '' %> />
-        I am a medical professional
+        Check this box if you are a medical professional
       </label>
     </div> 
     <button type="submit">Save Changes</button>

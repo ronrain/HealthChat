@@ -4,18 +4,19 @@
 <%- include('../partials/header') %> 
 
 <section>
-  <h2>Open Discussions Below!</h2>
+  <h1>Open Discussions Below!</h1>
   <h3>Check them out and see if you can help out someone!</h3>
   <ul>
-    <% discussions.forEach(discussion => { %>
-      <li> 
-        <a href="/discussions/<%= discussion._id %>">DISCUSSION POST:</a> 
-        <span class="ejs-post">
-          <%= discussion.topic %> with symptom(s):
-            <%= discussion.symptoms.map(symptom => symptom.name).join(' - ') %>
-          <% }) %>
-        </span>
-      </li>
+    <div class="index-new-dis">
+      <% discussions.forEach(discussion => { %>
+        <li> 
+          <a href="/discussions/<%= discussion._id %>">DISCUSSION POST:</a> 
+          <span class="ejs-post">
+            <%= discussion.topic %> with symptom(s): <%= discussion.symptoms.map(symptom => symptom.name).join(' - ') %>
+          </span>
+        </li>
+      <% }) %>
+    </div>
   </ul>
 </section>
 

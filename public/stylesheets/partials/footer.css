@@ -8,7 +8,7 @@
 }
 
 
-.disclaimer-content {
+.disclaimer-container {
   text-align: center;
   border: 2px solid var(--dark);
   padding: 20px;
@@ -21,6 +21,7 @@
   align-items: center;
   font-family: var(--primary-font);
   color: var(--dark);
+  font-weight: bolder;
 }
 
 h5, h6 {

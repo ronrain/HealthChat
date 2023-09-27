@@ -3,11 +3,11 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <h2>All Symptoms</h2>
+  <h1>All Symptoms</h1>
   <ul>
     <% symptoms.forEach(symptom => { %>
       <li>   
-      <a href="/symptoms/<%= symptom._id %>"><%= symptom.name %></a> 
+        <a href="/symptoms/<%= symptom._id %>"><%= symptom.name %></a> 
       </li>
     <% }) %>
   </ul>

@@ -7,21 +7,21 @@
     <h1>Add a Discussion!</h1>
     <form action="/discussions" method="POST">
       <label>
-      <h3>Health Concern:</h3> 
+        <h3>Health Concern:</h3> 
         <input type="text" name="topic" autocomplete="off">
       </label>
       <label>
-      <h3>Tell Us More: </h3>
+        <h3>Tell Us More: </h3>
         <textarea name="content" autocomplete="off"></textarea>
       </label>
-      <h3>Symptoms:</h3>
-      <% symptoms.forEach(symptom => { %>
-        <div>
-          <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
-          <label for="symptom-new"><%= symptom.name %></label>
-        </div>
-      <% }) %>
-      <button type="submit">Add Discussion</button>
+        <h3>Symptoms:</h3>
+        <% symptoms.forEach(symptom => { %>
+          <div class="symptom-container">
+            <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
+            <label for="symptom-new"><%= symptom.name %></label>
+            <% }) %>
+          </div>
+            <button type="submit">Add Discussion</button>
     </form>
   <% } %>
 </section>

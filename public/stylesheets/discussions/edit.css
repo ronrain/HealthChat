@@ -58,13 +58,13 @@ button {
   background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
-  padding: 12px 20px;
+  padding: 8px 8px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: var(--primary-font); 
-  font-size: 25px; 
+  font-size: 15px; 
 }
 
 button:hover {

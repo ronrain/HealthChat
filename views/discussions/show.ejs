@@ -6,8 +6,8 @@
   <img src="<%= discussion.avatar %>" alt="a picture of the discussion post's author">
   <p class="discussion-author">Discussion Posted by <span class="ejs-comment"><%= discussion.author.name %></span></p>
   <h1 class="discussion-text">Health Concern: <span class="ejs-comment"><%= discussion.topic %></span></h1>
-  <h2 class="discussion-text">Comments about the Health Concern: <span class="ejs-comment"><%= discussion.content %></span></h2>
-  <h2 class="discussion-text">My symptoms are:</h2> 
+  <h1 class="discussion-text">Comments about the Health Concern: <span class="ejs-comment"><%= discussion.content %></span></h1>
+  <h1 class="discussion-text">My symptoms are:</h1> 
   <ul>
     <% discussion.symptoms.forEach(symptom => { %>
       <li> <%= symptom.name %></li>
@@ -15,9 +15,9 @@
   </ul>
   <% if (discussion.author.equals(user?.profile._id)) { %>
     <div class="btn-container">
-      <a class="discussion-show" href="/discussions/<%= discussion._id %>/edit">
+      <form class="discussion-show" action="/discussions/<%= discussion._id %>/edit">
         <button class="btn">Edit this Discussion</button>
-      </a>
+      </form>
       <form class="discussion-show" action="/discussions/<%= discussion._id %>?_method=DELETE" method="POST">
         <button class="btn" type="submit">Delete this Discussion</button>
       </form>
@@ -35,11 +35,11 @@
         </form>
         <% if (reply.author?._id.equals(user?.profile._id)) { %>
           <div class="btn-container">
-            <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST" class="inline">
-              <button class="btn" type="submit">Delete Comment</button>
-            </form>
             <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>/edit">
               <button class="btn" type="submit">Edit Comment</button>
+            </form>
+            <form action="/discussions/<%= discussion._id %>/replies/<%= reply._id %>?_method=DELETE" method="POST" class="inline">
+              <button class="btn" type="submit">Delete Comment</button>
             </form>
           </div>
         <% } %>
@@ -50,7 +50,7 @@
   <% if (user) { %>
     <form action="/discussions/<%= discussion._id %>/replies" method="POST">
       <textarea name="comment"></textarea><br>
-      <input type="checkbox" name="isDoctor" value="true" <%= user.isDoctor ? 'checked' : '' %> <span> Check the Box if you are a medical professional</span>
+      <input type="checkbox" name="isDoctor" value="true" <%= user.isDoctor ? 'checked' : '' %>> <span> Check the Box if you are a medical professional</span>
       <button>Add Comment</button>
     </form>
   <% } else { %>

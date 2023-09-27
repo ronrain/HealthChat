@@ -65,13 +65,13 @@ button {
   background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
-  padding: 12px 20px;
+  padding: 8px 8px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: var(--primary-font); 
-  font-size: 25px; 
+  font-size: 15px; 
 }
 
 button:hover {
@@ -87,4 +87,11 @@ button:active {
 button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
+}
+
+.symptom-container {
+  display: block;
+  font-family: var(--secondary-font);
+  justify-content: space-between;
+  gap: 10px;
 }

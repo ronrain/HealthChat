@@ -4,14 +4,16 @@
 
 <section>
   <h1>Symptom Page for: <%= symptom.name %></h1>
-</section>
-<% if (symptom.author.equals(user?.profile._id)) { %>
-  <a href="/symptoms/<%= symptom._id %>/edit">
-    <button class="btn">Edit Symptom</button>
-  </a>
-  <form action="/symptoms/<%= symptom._id %>?_method=DELETE" method="POST">
-    <button class="btn" type="submit">Delete Symptom</button>
-  </form>
+  <% if (symptom.author.equals(user?.profile._id)) { %>
+    <div class="btn-container"> 
+      <form action="/symptoms/<%= symptom._id %>/edit">
+        <button class="btn">Edit Symptom</button>
+      </form>
+      <form action="/symptoms/<%= symptom._id %>?_method=DELETE" method="POST">
+        <button class="btn" type="submit">Delete Symptom</button>
+      </form>
+    </div>
   <% } %>
+</section>
 
 <%- include('../partials/footer') %>

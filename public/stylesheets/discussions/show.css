@@ -43,7 +43,6 @@ input[type="text"], textarea {
   margin-bottom: 15px;
   transition: background-color 0.3s, border 0.3s;
   font-family: var(--secondary-font); 
-  font-size: 20px; 
 }
 
 input[type="text"]:focus, textarea:focus {
@@ -56,7 +55,7 @@ button {
   background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
-  padding: 9px 9px;
+  padding: 8px 8px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
@@ -81,9 +80,9 @@ button:focus {
 }
 
 .btn-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .discussion-author, .discussion-text {
@@ -96,10 +95,19 @@ button:focus {
 
 .ejs-comment {
   font-family: var(--secondary-font);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .ejs-reply {
   font-family: var(--secondary-font);
-  font-size: 15px;
+  font-size: 22px;
+}
+
+ul {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+}
+
+p {
+  border-bottom: 2px solid var(--button-color);
 }

@@ -30,8 +30,7 @@ function show(req, res) {
   Symptom.findById(req.params.symptomId)
   .populate("author")
   .then(symptom => {
-    console.log('Symptom:', symptom)
-    console.log('user:', req.user)
+    ('Symptom:', symptom)
     res.render('symptoms/show', {
       symptom: symptom,
       title: "Symptoms"

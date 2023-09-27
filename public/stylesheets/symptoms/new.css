@@ -35,13 +35,6 @@ h1 {
   padding-bottom: 10px;
 }
 
-h3 {
-  font-size: 25px;
-  margin-bottom: 20px;
-  color: var(--dark);
-  padding-bottom: 10px;
-}
-
 input[type="text"], textarea {
   padding: 12px; 
   border: 1px solid var(--button-color);
@@ -65,26 +58,26 @@ button {
   background-color: var(--button-color);
   color: var(--secondary-background);
   border: none;
-  padding: 12px 20px;
+  padding: 8px 8px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: var(--primary-font); 
-  font-size: 25px; 
+  font-size: 15px; 
 }
 
-button:hover, select:hover {
+button:hover {
   background-color: var(--text-color);
   color: var(--background);
   transform: translateY(-2px); 
 }
 
-button:active, select:active {
+button:active {
   transform: translateY(0); 
 }
 
-button:focus, select:focus {
+button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
 }
