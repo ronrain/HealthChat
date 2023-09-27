@@ -27,7 +27,7 @@ section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+p, h1, .discussion-text {
   font-size: 35px;
   margin-bottom: 20px;
   color: var(--dark);
@@ -61,7 +61,7 @@ button {
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: var(--primary-font); 
-  font-size: 10px; 
+  font-size: 15px; 
 }
 
 button:hover {
@@ -87,25 +87,17 @@ button:focus {
 
 .discussion-author, .discussion-text {
   font-family: var(--primary-font);
+  font-size: 30px;
 }
 
-.discussion-text {
-  font-size: 18px;
-}
-
-.ejs-comment {
+.ejs-comment, .ejs-reply, ul {
   font-family: var(--secondary-font);
-  font-size: 22px;
+  font-size: 30px;
 }
 
-.ejs-reply {
+.comment {
   font-family: var(--secondary-font);
-  font-size: 22px;
-}
-
-ul {
-  font-family: var(--secondary-font);
-  font-size: 20px;
+  font-size: 25px;
 }
 
 p {

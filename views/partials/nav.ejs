@@ -3,13 +3,14 @@
 <% } %>
 </head>
 <body>
-<nav id="top-bar">
+<div class="nav-container">
+  <nav>
   <a href="/discussions">ALL DISCUSSIONS</a>
   <a href="/discussions/new/">ADD DISCUSSION</a>
   <a href="/symptoms">ALL SYMPTOMS</a>
   <a href="/symptoms/new/">ADD SYMPTOM</a>
   <% if (user) { %>
-    <a href="/auth/logout">Logout</a>
+    <a href="/auth/logout">LOGOUT</a>
   <% } else { %>
     <div 
       id="g_id_onload"
@@ -28,3 +29,10 @@
     ></div>
   <% } %>
 </nav>
+</div>
+
+<header>
+  <div class="image-container">
+    <img src="/assets/healthchat-logo.png" alt="HealthChat Logo">
+  </div>
+</header>

@@ -23,7 +23,7 @@
       </form>
     </div>
   <% } %>
-  <h2>Comments:</h2>
+  <h1>Comments:</h1>
   <ul>
     <% discussion.replies?.forEach(reply => { %>
       <li> 
@@ -49,7 +49,7 @@
   <h2>Add a Comment:</h2>
   <% if (user) { %>
     <form action="/discussions/<%= discussion._id %>/replies" method="POST">
-      <textarea name="comment"></textarea><br>
+      <textarea class="comment" name="comment"></textarea><br>
       <input type="checkbox" name="isDoctor" value="true" <%= user.isDoctor ? 'checked' : '' %>> <span> Check the Box if you are a medical professional</span>
       <button>Add Comment</button>
     </form>

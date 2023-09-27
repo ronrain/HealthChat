@@ -11,7 +11,7 @@
 - Role-based features (e.g., doctors).
 
 
-### Start playing [HERE]()
+### Start a discussion [HERE]()
 
 ## Screenshots
 
@@ -28,11 +28,13 @@
 
 ## Attributions
 [Favicon Generator](https://favicon.io/favicon-generator/)
+[Logo creator](https://www.canva.com/logos/templates/)
 ## Future Goals
 - [ ] Add a Profile section that includes the emotional well-being of users
 - [ ] Add a severity scale for the symptoms
 - [ ] Create a helpful checkbox that the discussion creator and other users can check if the reply was helpful
 - [ ] Make it compatible for mobile devices
+- [ ] Have the possibility for more languages to promote accessibility 
 
 
 
