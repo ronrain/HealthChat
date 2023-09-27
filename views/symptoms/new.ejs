@@ -2,21 +2,23 @@
 <link rel="stylesheet" href="/stylesheets/symptoms/new.css" />
 <%- include('../partials/nav') %>
 
+
 <section>
-	<h1><%= title %></h1>
-  <p>Please first ensure that the Symptom is not in the dropdown
-    <select>
-      <% symptoms.forEach(function(symptom) { 
-      %>
-        <option> <%= symptom.name %></option>
-      <% }) %>
-    </select>
-  </p>
-  <form id="add-symptom-form" action="/symptoms" method="POST">
-    <label for="name-input">Name:</label>
-    <input type="text" name="name" id="name-input">
-    <button type="submit">Add Symptom</button>
-  </form>
+  <% if (user) { %>
+	  <h1><%= title %></h1>
+    <p>Please first ensure that the Symptom is not in the dropdown
+      <select>
+        <% symptoms.forEach(function(symptom) { %>
+          <option> <%= symptom.name %></option>
+        <% }) %>
+      </select>
+    </p>
+    <form id="add-symptom-form" action="/symptoms" method="POST">
+      <label for="name-input">Name:</label>
+      <input type="text" name="name" id="name-input">
+      <button type="submit">Add Symptom</button>
+    </form>
+  <% } %>
 </section>
 
 <%- include('../partials/footer') %>

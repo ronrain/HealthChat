@@ -94,6 +94,7 @@ function deleteSymptom(req, res) {
 }
 
 function newSymptom(req, res) {
+  req.body.author = req.user.profile._id
   Symptom.find({})
   .then(symptoms => {
     res.render('symptoms/new', {

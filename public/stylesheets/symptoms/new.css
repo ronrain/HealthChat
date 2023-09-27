@@ -12,6 +12,10 @@ body {
   font-family: var(--primary-font);
   background-color: var(--background);
   color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-size: 25px; 
 }
 
 section {
@@ -23,25 +27,38 @@ section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-select, input[type="text"] {
-  font-family: var(--secondary-font);
+h1 {
+  font-size: 35px;
+  margin-bottom: 20px;
+  color: var(--dark);
+  border-bottom: 2px solid var(--button-color);
+  padding-bottom: 10px;
+}
+
+h3 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: var(--dark);
+  padding-bottom: 10px;
+}
+
+input[type="text"], textarea {
+  padding: 12px; 
+  border: 1px solid var(--button-color);
   background-color: var(--secondary-background);
-  border: 1px solid var(--dark);
-  padding: 8px;
-  margin: 8px 0;
+  color: var(--text-color);
+  border-radius: 5px;
   width: 90%;
+  margin-bottom: 15px;
+  transition: background-color 0.3s, border 0.3s;
+  font-family: var(--secondary-font); 
+  font-size: 20px; 
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+input[type="text"]:focus, textarea:focus {
+  background-color: var(--secondary-background);
+  border-color: var(--dark);
+  outline: none;
 }
 
 button {
@@ -57,17 +74,26 @@ button {
   font-size: 25px; 
 }
 
-button:hover {
+button:hover, select:hover {
   background-color: var(--text-color);
   color: var(--background);
   transform: translateY(-2px); 
 }
 
-button:active {
+button:active, select:active {
   transform: translateY(0); 
 }
 
-button:focus {
+button:focus, select:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
+}
+
+select {
+  margin: 0 auto;
+  width: 310px;
+  padding: 15px;
+  height: 25px;
+  cursor: pointer;
+  background: var(--background)
 }

@@ -222,6 +222,7 @@ function deleteReply(req, res) {
 }
 
 function addToSymptoms(req, res) {
+  req.body.author = req.user.profile._id
   Discussion.findById(req.params.discussionId)
   .then(discussion => {
     discussion.symptoms.push(req.body.symptomId)

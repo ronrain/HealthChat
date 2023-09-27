@@ -21,3 +21,7 @@ nav#top-bar {
   font-size: 15px; 
   color: var(--secondary-background);
 }
+
+a:active, a:visited {
+  color: inherit;
+}
