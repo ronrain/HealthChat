@@ -61,10 +61,9 @@ input[type="text"]:focus, textarea:focus {
   outline: none;
 }
 
-/* CSS */
 button {
-  --b: 3px;   /* border thickness */
-  --s: .45em; /* size of the corner */
+  --b: 3px;   
+  --s: .45em; 
   --color: #373B44;
   
   padding: calc(.5em + var(--s)) calc(.9em + var(--s));
