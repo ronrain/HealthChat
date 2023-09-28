@@ -3,7 +3,8 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <img src="<%= discussion.avatar %>" alt="a picture of the discussion post's author">
+  <img src="<%= discussion.author.avatar %> " alt="a picture of the discussion post's author">
+  <% console.log(discussion.avatar) %>
   <p class="discussion-author">Discussion Posted by <span class="ejs-comment"><%= discussion.author.name %></span></p>
   <h1 class="discussion-text">Health Concern: <span class="ejs-comment"><%= discussion.topic %></span></h1>
   <h1 class="discussion-text">Comments about the Health Concern: <span class="ejs-comment"><%= discussion.content %></span></h1>

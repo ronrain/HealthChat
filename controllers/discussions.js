@@ -21,7 +21,7 @@ function newDiscussion(req, res) {
 
 function index(req, res) {
   Discussion.find({})
-  .populate('symptoms')
+  .populate('symptoms', 'avatar')
   .then(discussions => {
     Symptom.find({})
     .then(symptoms => {
