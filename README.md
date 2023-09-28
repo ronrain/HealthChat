@@ -34,10 +34,10 @@
 - Express
 
 ## Attributions
-[Favicon Generator](https://favicon.io/favicon-generator/)
-[Logo creator](https://www.canva.com/logos/templates/)
-[CSS Button Animator](https://getcssscan.com/css-buttons-examples?ref=beautifulboxshadow-bottom)
-[CSS Checkbox Animator](https://getcssscan.com/css-checkboxes-examples?ref=beautifulboxshadow-bottom)
+- [Favicon Generator](https://favicon.io/favicon-generator/)
+- [Logo creator](https://www.canva.com/logos/templates/)
+- [CSS Button Animator](https://getcssscan.com/css-buttons-examples?ref=beautifulboxshadow-bottom)
+- [CSS Checkbox Animator](https://getcssscan.com/css-checkboxes-examples?ref=beautifulboxshadow-bottom)
 
 ## Future Goals
 - [ ] Add a Profile section that includes the emotional well-being of users
