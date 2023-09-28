@@ -4,7 +4,6 @@
 
 <section>
   <img src="<%= discussion.author.avatar %> " alt="a picture of the discussion post's author">
-  <% console.log(discussion.avatar) %>
   <p class="discussion-author">Discussion Posted by <span class="ejs-comment"><%= discussion.author.name %></span></p>
   <h1 class="discussion-text">Health Concern: <span class="ejs-comment"><%= discussion.topic %></span></h1>
   <h1 class="discussion-text">Comments about the Health Concern: <span class="ejs-comment"><%= discussion.content %></span></h1>
@@ -53,11 +52,11 @@
       <textarea class="comment" name="comment"></textarea><br>
       <div class="checkbox-wrapper-55">
         <div class="switch-text">
-        <label class="rocker rocker-small" for="isDoctorCheckbox">
-          <input type="checkbox" name="isDoctor" id="isDoctorCheckbox" value="true" <%= user.isDoctor ? 'checked' : '' %>>
-          <span class="switch-left">Yes</span>
-          <span class="switch-right">No</span>
-        </label>
+          <label class="rocker rocker-small" for="isDoctorCheckbox">
+            <input type="checkbox" name="isDoctor" id="isDoctorCheckbox" value="true" <%= user.isDoctor ? 'checked' : '' %>>
+            <span class="switch-left">Yes</span>
+            <span class="switch-right">No</span>
+          </label>
         <label for="isDoctorCheckbox"><span class="reply-question"> Are you a medical professional? </span></label>
       </div> 
     </div>

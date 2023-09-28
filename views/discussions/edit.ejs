@@ -33,8 +33,8 @@
               <% if(discussion.symptoms.some(symptom => symptom._id.equals(symptom._id))) %>>
               <span class="switch-left">Yes</span>
               <span class="switch-right">No</span>
-          </label>
-          <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
+            </label>
+            <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
           </div>
         <% }) %>
       </label>

@@ -11,10 +11,10 @@
 - Role-based features (e.g., doctors).
 
 
-### Start a discussion [HERE]()
+### Start a discussion [HERE](https://healthchat.fly.dev/)
 
 ## Screenshots
-
+![HealthChat Logo](./assets/healthchat-logo.png)
 
 ## Technologies Used
 - JavaScript
@@ -25,6 +25,7 @@
 - MongoDB
 - HTML
 - Git
+- Express
 
 ## Attributions
 [Favicon Generator](https://favicon.io/favicon-generator/)

@@ -65,6 +65,7 @@ input[type="text"]:focus, textarea:focus {
 .ejs-comment, .ejs-reply, ul {
   font-family: var(--secondary-font);
   font-size: 30px;
+  color: var(--text-color);
 }
 
 .comment {
@@ -75,8 +76,6 @@ input[type="text"]:focus, textarea:focus {
 p {
   border-bottom: 2px solid var(--button-color);
 }
-
-
 
 button {
   --b: 3px;   
@@ -233,7 +232,6 @@ button:active {
   background-color: #ccc;
 }
 
-/* Keyboard Users */
 .checkbox-wrapper-55 input:focus + .switch-left {
   color: #333;
 }

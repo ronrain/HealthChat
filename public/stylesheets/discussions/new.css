@@ -269,3 +269,8 @@ nav a:hover, nav a:active {
 .add-comment {
   width: fit-content;
 }
+
+.symptom-new {
+  font-family: var(--secondary-font);
+  font-size: 25px;
+}
