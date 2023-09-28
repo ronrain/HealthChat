@@ -39,7 +39,7 @@ a {
   font-family: var(--secondary-font);
   font-size: 25px;
   color: var(--text-color);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 span {
