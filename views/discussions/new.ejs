@@ -14,14 +14,20 @@
         <h3>Tell Us More: </h3>
         <textarea name="content" autocomplete="off"></textarea>
       </label>
-        <h3>Symptoms:</h3>
+      <h3>Symptoms:</h3>
+      <div class="symptom-list">
         <% symptoms.forEach(symptom => { %>
-          <div class="symptom-container">
-            <input type="checkbox" name="symptoms" value="<%= symptom._id %>">
-            <label for="symptom-new"><%= symptom.name %></label>
-            <% }) %>
-            <button type="submit">Add Discussion</button>
+          <div class="checkbox-wrapper-55">
+            <label class="rocker rocker-small">
+              <input type="checkbox" name="symptoms" id="symptom-<%= symptom._id %>" value="<%= symptom._id %>">
+              <span class="switch-left">Yes</span>
+              <span class="switch-right">No</span>
+            </label>
+            <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
           </div>
+        <% }) %>
+        <button class="add-comment" type="submit"> Add Discussion</button>
+      </div>
     </form>
   <% } %>
 </section>

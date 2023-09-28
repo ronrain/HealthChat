@@ -24,17 +24,22 @@
       </label>
       <label>
         Symptoms: 
+        <div class="symptom-list">
         <% symptoms.forEach(symptom => { %>
-          <div>
-            <input type="checkbox" name="symptoms" value="<%= symptom._id %>"
-            <% if(discussion.symptoms.some(symptom => symptom._id.equals(symptom._id))) %>
-            >
-            <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
+          <div class="checkbox-wrapper-55">
+            <label class="rocker rocker-small" for="symptom-<%= symptom._id %>">
+              <input type="checkbox" name="symptoms" id="symptom-<%= symptom._id %>" value="<%= symptom._id %>">
+              <input type="checkbox" name="symptoms" value="<%= symptom._id %>"
+              <% if(discussion.symptoms.some(symptom => symptom._id.equals(symptom._id))) %>>
+              <span class="switch-left">Yes</span>
+              <span class="switch-right">No</span>
+          </label>
+          <label for="symptom-<%= symptom._id %>"><%= symptom.name %></label>
           </div>
         <% }) %>
       </label>
+      <button class="add-comment" type="submit">Save Changes</button>
     </div>
-    <button type="submit">Save Changes</button>
   </form>
 </section>
 

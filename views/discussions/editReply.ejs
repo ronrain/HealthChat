@@ -18,12 +18,14 @@
         autocomplete="off"
       ><%= replies.comment %></textarea>
     </label>
-    </div>
-    <div id="editReply-isDoctor">  
-      <label>
-        <input type="checkbox" name="isDoctor" value="true" <%= replies.isDoctor ? 'checked' : '' %> />
-        Check this box if you are a medical professional
+    </div> 
+    <div class="checkbox-wrapper-55">
+      <label class="rocker rocker-small" for="isDoctorCheckbox">
+        <input type="checkbox" name="isDoctor" id="isDoctorCheckbox" value="true" <%= replies.isDoctor ? 'checked' : '' %> />
+        <span class="switch-left">Yes</span>
+        <span class="switch-right">No</span>
       </label>
+      <label for="isDoctorCheckbox">Are you a medical professional?</label>
     </div> 
     <button type="submit">Save Changes</button>
   </form>

@@ -51,7 +51,16 @@
   <% if (user) { %>
     <form action="/discussions/<%= discussion._id %>/replies" method="POST">
       <textarea class="comment" name="comment"></textarea><br>
-      <input type="checkbox" name="isDoctor" value="true" <%= user.isDoctor ? 'checked' : '' %>> <span> Check the Box if you are a medical professional</span>
+      <div class="checkbox-wrapper-55">
+        <div class="switch-text">
+        <label class="rocker rocker-small" for="isDoctorCheckbox">
+          <input type="checkbox" name="isDoctor" id="isDoctorCheckbox" value="true" <%= user.isDoctor ? 'checked' : '' %>>
+          <span class="switch-left">Yes</span>
+          <span class="switch-right">No</span>
+        </label>
+        <label for="isDoctorCheckbox"><span class="reply-question"> Are you a medical professional? </span></label>
+      </div> 
+    </div>
       <button>Add Comment</button>
     </form>
   <% } else { %>
