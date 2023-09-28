@@ -55,29 +55,37 @@ input[type="text"]:focus {
 }
 
 button {
-  background-color: var(--button-color);
-  color: var(--secondary-background);
-  border: none;
-  padding: 8px 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: var(--primary-font); 
-  font-size: 15px; 
+  --b: 3px; 
+  --s: .45em;
+  --color: #373B44;
+  
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+  font-family: var(--primary-font);
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-button:hover {
-  background-color: var(--text-color);
-  color: var(--background);
-  transform: translateY(-2px); 
+button:hover,
+button:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
 }
 
 button:active {
-  transform: translateY(0); 
+  background: var(--color);
+  color: #fff;
 }
 
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(125, 78, 87, 0.3); 
-}

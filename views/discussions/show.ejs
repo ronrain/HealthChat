@@ -47,7 +47,7 @@
       </li>
     <% }) %>
   </ul>
-  <h2>Add a Comment:</h2>
+  <h1>Add a Comment:</h1>
   <% if (user) { %>
     <form action="/discussions/<%= discussion._id %>/replies" method="POST">
       <textarea class="comment" name="comment"></textarea><br>
