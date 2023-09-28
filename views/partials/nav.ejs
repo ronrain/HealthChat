@@ -5,13 +5,13 @@
 <body>
 <div class="nav-container">
   <nav>
-  <a href="/discussions">ALL DISCUSSIONS</a>
-  <a href="/discussions/new/">ADD DISCUSSION</a>
-  <a href="/symptoms">ALL SYMPTOMS</a>
-  <a href="/symptoms/new/">ADD SYMPTOM</a>
-  <% if (user) { %>
-    <a href="/auth/logout">LOGOUT</a>
-  <% } else { %>
+    <a href="/discussions" class="nav-A-container">ALL DISCUSSIONS</a>
+    <a href="/symptoms"class="nav-A-container">ALL SYMPTOMS</a>
+    <% if (user) { %>
+    <a href="/discussions/new/" class="nav-A-container">ADD DISCUSSION</a>
+    <a href="/symptoms/new/" class="nav-A-container">ADD SYMPTOM</a>
+    <a href="/auth/logout"class="nav-A-container">LOGOUT</a>
+    <% } else { %>
     <div 
       id="g_id_onload"
       data-client_id="<%= googleClientID %>"
@@ -27,8 +27,8 @@
       data-shape="rectangular"
       data-logo_alignment="left"
     ></div>
-  <% } %>
-</nav>
+    <% } %>
+  </nav>
 </div>
 
 <header>

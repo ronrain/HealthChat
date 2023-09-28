@@ -46,3 +46,7 @@ span {
   font-size: 30px;
   color: var(--text-color);
 }
+
+.nav-A-container {
+  color: var(--background)
+}

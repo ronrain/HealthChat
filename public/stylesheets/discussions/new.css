@@ -183,7 +183,7 @@ nav a:hover, nav a:active {
 .checkbox-wrapper-55 .switch-right {
   right: 0.5em;
   bottom: 0;
-  background-color: #bd5757;
+  background-color: var(--dark);
   color: #fff;
 }
 
@@ -209,7 +209,7 @@ nav a:hover, nav a:active {
 }
 
 .checkbox-wrapper-55 input:checked + .switch-left {
-  background-color: #0084d0;
+  background-color: var(--button-color);
   color: #fff;
   bottom: 0px;
   left: 0.5em;

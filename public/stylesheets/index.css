@@ -8,7 +8,7 @@
   --secondary-font: 'Swanky and Moo Moo', cursive;
 }
 
-h1 {
+.welcome-message {
   font-family: var(--primary-font);
   font-size: x-large;
   color: var(--dark);
@@ -22,4 +22,8 @@ main {
   max-width: 800px;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.nav-A-container {
+  color: var(--background)
 }
