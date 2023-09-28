@@ -18,9 +18,10 @@
 ## Start a discussion [HERE](https://healthchat.fly.dev/)
 
 ## Screenshots
+### HealthChat Logo:
 ![HealthChat Logo](public/assets/healthchat-logo.png)
+### A View of the Discussion Posts: 
 ![View of All Discussions](public/assets/all-discussion-posts.png)
-![View of a Discussion Post](public/assets/discussion-post.png)
 
 ## Technologies Used
 - JavaScript
