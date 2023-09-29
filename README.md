@@ -6,6 +6,8 @@
  
  HealthChat is not only a platform for individuals seeking answers but also a space for health professionals and enthusiasts to share their knowledge, provide guidance, and contribute to the overall well-being of the community. Whether you're looking to understand a specific symptom, share a health journey, or offer expertise, HealthChat provides the space for all these interactions.
 
+## [Start a Discussion](https://healthchat.fly.dev/)
+
 ## Features
 - User authentication.
 - CRUD operations for discussions and symptoms.
@@ -14,8 +16,6 @@
 - Role-based features (e.g., doctors).
 
 ### [Trello Planning Material](https://trello.com/b/quTDOo8A/healthchat)
-
-## Start a discussion [HERE](https://healthchat.fly.dev/)
 
 ## Screenshots
 ### HealthChat Logo:
