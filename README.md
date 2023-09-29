@@ -33,6 +33,8 @@
 - HTML
 - Git
 - Express
+- Password.js
+- Google Auth
 
 ## Attributions
 - [Favicon Generator](https://favicon.io/favicon-generator/)
