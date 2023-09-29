@@ -3,17 +3,19 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <h1>Symptom Page for: <%= symptom.name %></h1>
-  <% if (symptom.author.equals(user?.profile._id)) { %>
-    <div class="btn-container"> 
-      <form action="/symptoms/<%= symptom._id %>/edit">
-        <button class="btn">Edit Symptom</button>
-      </form>
-      <form action="/symptoms/<%= symptom._id %>?_method=DELETE" method="POST">
-        <button class="btn" type="submit">Delete Symptom</button>
-      </form>
-    </div>
-  <% } %>
+  <div class="symptom-show-view">
+    <h1>Symptom Page for:</h1> <h1 class="symptom-show"> <%= symptom.name %> </h1> 
+  </div>
+    <% if (symptom.author.equals(user?.profile._id)) { %>
+      <div class="btn-container"> 
+        <form action="/symptoms/<%= symptom._id %>/edit">
+          <button class="btn">Edit Symptom</button>
+        </form>
+        <form action="/symptoms/<%= symptom._id %>?_method=DELETE" method="POST">
+          <button class="btn" type="submit">Delete Symptom</button>
+        </form>
+      </div>
+    <% } %>
 </section>
 
 <%- include('../partials/footer') %>

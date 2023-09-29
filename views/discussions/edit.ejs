@@ -29,7 +29,7 @@
           <div class="checkbox-wrapper-55">
             <label class="rocker rocker-small" for="symptom-<%= symptom._id %>">
               <input type="checkbox" name="symptoms" id="symptom-<%= symptom._id %>" value="<%= symptom._id %>"
-              <% if(discussion.symptoms.some(discSymptom => discSymptom._id.toString() === symptom._id.toString())) { %> checked <% } %>>
+              <% if(discussion.symptoms.find(discSymptom => discSymptom._id.equals(symptom._id))) { %> checked <% } %>>
               <span class="switch-left">Yes</span>
               <span class="switch-right">No</span>
             </label>

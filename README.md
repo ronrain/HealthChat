@@ -10,7 +10,7 @@
 
 ## Features
 - User authentication.
-- CRUD operations for discussions and symptoms.
+- CRUD operations for discussions, replies and symptoms.
 - Nested replies within discussions.
 - Ability to tag symptoms within discussions.
 - Role-based features (e.g., doctors).

@@ -93,3 +93,20 @@ button:active {
   justify-content: space-between;
   gap: 10px;
 }
+
+.symptom-show {
+  font-family: var(--secondary-font);
+  font-size: 35px;
+  color: var(--text-color);
+}
+
+.symptom-show-view h1,
+.symptom-show-view .symptom-show-view {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.symptom-show .symptom-show-view {
+  margin-top: -2px;
+}
